@@ -4,37 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Misty's Page</title>
+ 
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="thunder.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <style>
-   body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
-    background-image: url('images.jpg'); 
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-attachment: fixed; /* Keep the background fixed while scrolling */
-    margin: 0; /* Remove default margin */
-    color: white; /* Change text color to white for better contrast */
+
+.background-video {
+    position: fixed; /* Make the video fixed */
+    top: 50%; /* Center the video vertically */
+    left: 50%; /* Center the video horizontally */
+    min-width: 100%; /* Ensure the video covers the entire width */
+    min-height: 100%; /* Ensure the video covers the entire height */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    z-index: -1; /* Place the video behind other content */
+    transform: translate(-50%, -50%); /* Center the video */
 }
 
-
 h1 {
-    color: beige; /* Text color */
+    background-image: url('MM.png'); /* Set the background image */
+    background-size: contain; /* Scale the image to fit the element */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+    width: 380px; /* Set a width for the h1 element (adjust as needed) */
+    height: 150px; /* Set a height for the h1 element (adjust as needed) */
     margin: 20px 0; /* Space above and below the title */
-    text-shadow: 
-        2px 2px 0 rgba(0, 0, 0, 0.7), /* Right shadow */
-        4px 4px 0 rgba(0, 0, 0, 0.7), /* Further right shadow */
-        6px 6px 0 rgba(0, 0, 0, 0.7), /* Even further right shadow */
-        8px 8px 0 rgba(0, 0, 0, 0.7); /* Furthest right shadow */
     position: fixed; 
     top: 10px; /* Distance from the top of the viewport */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Adjust to center the title */
-    font-size: 48px; /* Increase the font size (adjust as needed) */
+    z-index: 10; /* Ensure it stays above other content */
+    text-align: center; /* Center the text inside the h1 */
 }
+
+
         .content {
             text-align: left; /* Align content to the left */
             position: absolute; /* Position the content absolutely */
@@ -88,20 +95,20 @@ button.active {
     }
 }
 
-
 </style>
 
 
-<img src="omega.png" alt="Logo" class="logo">
 
-    <h1>" MISTY'S PAGE "</h1> 
+<h1>
+</h1>
 
 
 
  <div class="animated-text">" I AM DEEPLY SORRY 
 <br> &nbsp; FOR WHAT I DID "  ~E </div> 
 
-  <div class="container">
+<div class="container">
+    <img src="omega.png" alt="Logo" class="logo">
         <h3>🎶 M Playlist</h3>
         <div class="current-song">
             <h2 id="song-title">One Last Song - A1</h2>
@@ -115,6 +122,41 @@ button.active {
             <button id="prev-btn">⏮️ Previous</button>
             <button id="next-btn">Next ⏭️</button>
         </div>
+
+   <div class="jump-to-song">
+        <label for="song-select">Jump to Song:</label>
+        <select id="song-select">
+            <option value="0">1. She's Everything</option>
+            <option value="1">2. Stop & Stare</option>
+            <option value="2">3. Sweet Disposition</option>
+            <option value="3">4. Closing Time</option>
+            <option value="4">5. Kiss From A Rose</option>
+            <option value="5">6. Time of Your Life</option>
+            <option value="6">7. Airplanes</option>
+            <option value="7">8. Stay</option>
+            <option value="8">9. Russian Roulette</option>
+            <option value="9">10. Home</option>
+            <option value="10">11. The night we met</option>
+            <option value="11">12. Older</option>
+            <option value="12">13. Untitled</option>
+            <option value="13">14. Breathe me</option>
+            <option value="14">15. Hurt</option>
+            <option value="15">16. They'll Never Know</option>
+            <option value="16">17. Rainbow</option>
+            <option value="17">18. Bad To The Bone</option>
+            <option value="18">19. Ride of the Valkyries</option>
+            <option value="19">20. It's A Long Way To The Top</option>
+            <option value="20">21. Gypsy</option>
+            <option value="21">22. Drive</option>
+            <option value="22">23. Insensitive</option>
+            <option value="23">24. Turn around look at me</option>
+            <option value="24">25. I'm like a bird</option>
+            <option value="25">26. Barracuda</option>
+            <option value="26">27. OUTRO</option>
+            <option value="27">28. Flightless bird american mouth</option>
+        </select>
+    </div>
+
     </div>
 
     <audio id="audio" src="Brad Paisley - She's Everything (Lyrics).mp3"></audio>
@@ -131,7 +173,7 @@ button.active {
 
     .container {
     text-align: left; /* Align text to the left */
-    background: black; /* Background color */
+    background: black;
     padding: 20px; /* Padding inside the container */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
@@ -140,8 +182,15 @@ button.active {
     left: 20px; /* Distance from the left */
     border: 3px ridge black; /* 3px ridge black border */
     width: 300px; /* Set a fixed width */
-    height: 200px; /* Set a fixed height */
+    height: 290px; /* Set a fixed height */
     overflow: hidden; /* Hide overflow content */
+}
+.logo {
+    display: block; /* Make the image a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    width: 85px; /* Set the width of the logo (adjust as needed) */
+    height: 60px; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below the logo */
 }
 
 .current-song h2 {
@@ -157,8 +206,24 @@ button.active {
         }
 
         button {
-            background: darkblue;
-            color: white;
+            background: linear-gradient(45deg, #ff0080, #00ffff, #00ff00, #ff00ff); /* Neon gradient */
+    background-size: 400% 400%; /* Make the gradient larger for animation */
+    animation: gradient-animation 15s ease infinite; /* Animate the gradient */
+    box-shadow: 0 0 20px rgba(255, 0, 128, 0.5), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 0, 0.5); /* Neon glow effect */
+
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+            color: black;
             border: none;
             border-radius: 5px;
             padding: 10px 15px;
@@ -172,7 +237,7 @@ button.active {
         }
     </style>
 
-    <script>
+     <script>
         const songs = [
             { title: "1. She's Everything", artist: "Brad Paisley", src: "Brad Paisley - She's Everything (Lyrics).mp3" },
             { title: "2. Stop & Stare", artist: "OneRepublic", src: "Stop & Stare - OneRepublic (Lyrics).mp3" },
@@ -181,14 +246,31 @@ button.active {
             { title: "5. Kiss From A Rose", artist: "Semisonic", src: "Seal - Kiss From A Rose (Lyrics).mp3" },
             { title: "6. Time of Your Life", artist: "Green Day", src: "Green Day Time of Your Life(Good Riddance) Lyrics.mp3" },
             { title: "7. Airplanes", artist: "B.o.B (ft. Hayley Williams)", src: "Airplanes - B.o.B (feat. Hayley Williams of Paramore) [LyricsVietsub].mp3" },
-            { title: "8. Stay", artist: "Rihanna", src: "Rihanna - Stay (Lyrics) I want you to stay.mp3" },
+            { title: "8. Stay", artist: "Stay", src: "Rihanna - Stay (Lyrics) I want you to stay.mp3" },
             { title: "9. Russian Roulette", artist: "Rihanna", src: "Rihanna - Russian Roulette(Lyrics).mp3" },
             { title: "10. Home", artist: "Michael Buble", src: "michael bublé - home (lyrics).mp3" },
             { title: "11. The night we met", artist: "Ehllen Quezada", src: "The night we met (Ehllen's Cover).mp3" },
             { title: "12. Older", artist: "Sasha Sloan", src: "Sasha Sloan - Older (Lyrics).mp3" },
-            { title: "12. Untitled", artist: "Simple Plan", src: "Simple Plan - Untitled (Lyrics).mp3" },
-            { title: "13. Breathe me", artist: "Sia", src: "Breathe me -- sia.mp3" },
-            { title: "14. Hurt", artist: "Nine Inch Nails", src: "Nine Inch Nails - Hurt (Lyrics).mp3" },
+            { title: "13. Untitled", artist: "Simple Plan", src: "Simple Plan - Untitled (Lyrics).mp3" },
+            { title: "14. Breathe me", artist: "Sia", src: "Breathe me -- sia.mp3" },
+            { title: "15. Hurt", artist: "Nine Inch Nails", src: "Nine Inch Nails - Hurt (Lyrics).mp3" },
+            { title: "16. They'll Never Know", artist:"RossCopperman", src: "Ross Copperman - They'll Never Know [Lyrics On Screen].mp3" },
+            { title: "17. Rainbow", artist: "Kacey Musgraves", src: "Kacey Musgraves - Rainbow (Lyrics).mp3" },
+            { title: "18. Bad To The Bone", artist:"George Thorogood", src: "George Thorogood & The Destroyers", src: "Bad To The Bone.mp3" },
+            { title: "19. Ride of the Valkyries", artist:"(Die Walküre)", src: "UBC Symphony Orchestra - Wagner - Ride of the Valkyries from Die Walküre.mp3" },
+            { title: "20. It's A Long Way To The Top", artist:"AC/DC", src: "ACDC - It's A Long Way To The Top [Official Music Video], Full HD (Remaster, Resync and Upscale).mp3" },
+            { title: "21. Fleetwood Mac", artist:"Gypsy", src: "Fleetwood Mac - Gypsy (Lyrics).mp3" },
+            { title: "22. Drive", artist:"The Cars", src: "The Cars - Drive (Lyrics).mp3" },
+            { title: "23. Insensitive", artist:"Jann Arden", src: "Jann Arden - Insensitive (Live From Songs & Stories) [mYrzQ5mo4dc].mp3" },
+            { title: "24. Turn Around, Look At Me", artist:"Glenn", src: "Turn Around, Look At Me.mp3" },
+            { title: "25. I'm Like A Bird", artist:"Nelly Furtado", src: "Nelly Furtado - I'm Like A Bird (Official Music Video).mp3" },
+            { title: "26. Barracuda", artist:"Heart", src: "Heart - Barracuda.mp3" },
+            { title: "27. OUTRO", artist:"M83", src: "M83 - OUTRO (Lyrics).mp3" },
+            { title: "28. Flightless bird", artist:"Iron & Wine", src: "Flightless Bird, American Mouth.mp3" },
+
+
+
+
         ];
 
         let currentSongIndex = 0;
@@ -231,40 +313,23 @@ button.active {
     </script>
 
 
-    <div class="jump-to-song">
-        <label for="song-select">Jump to Song:</label>
-        <select id="song-select">
-            <option value="0">1. She's Everything</option>
-            <option value="1">2. Stop & Stare</option>
-            <option value="2">3. Sweet Disposition</option>
-            <option value="3">4. Closing Time</option>
-            <option value="4">5. Kiss From A Rose</option>
-            <option value="5">6. Time of Your Life</option>
-            <option value="6">7. Airplanes</option>
-            <option value="7">8. Stay </option>
-            <option value="8">9. Russian Roulette</option>
-            <option value="9">10. Home</option>
-            <option value="10">11. The night we met</option>
-            <option value="11">12. Older</option>
-            <option value="12">13. Untitled</option>
-            <option value="13">14. Breathe me</option>
-            <option value="14">15. Hurt</option>
-        </select>
-    </div>
+
+
 
 
 <style>
 
 .jump-to-song {
-    margin-top: 140px; /* Increase space above the dropdown to move it down */
+    top: 400px; /* Increase space above the dropdown to move it down */
+    left: 50px; /* Move it to the right corner (adjust this value to move it right) */
     text-align: left; /* Align the dropdown to the left */
     z-index: 10; /* Ensure it appears above other elements */
-    margin-right: 1000px; /* Optional: Adjust this value to move it away from the left edge */
     position: fixed;
 }
 
 .jump-to-song label {
     margin-right: 5px; /* Space between label and dropdown */
+    margin-top: 200px; /* Add margin to move the label down */
     color: white; /* Change label color to white for visibility */
 }
 
@@ -281,65 +346,7 @@ document.getElementById('song-select').addEventListener('change', function() {
 
 
 
-<div class="poem-container">
-    <h2> "M" </h2>
-    <p>
-        She is the fearless one, a name well-known,<br>
-        Brave in spirit, yet secrets she’s sown.<br>
-        Beneath her strength, a softness resides,<br>
-        A hidden sorrow that she often hides.<br><br>
 
-        Most see her smile, a mask so bright,<br>
-        Yet shadows linger, veiled from sight.<br>
-        In moments of stillness, her heart feels the weight,<br>
-        Though her face bears no trace of the burdens of fate.<br><br>
-
-        Many admire her, drawn to her light,<br>
-        But one holds her heart, her true guiding light.<br>
-        A soul who transformed her, a love so profound,<br>
-        In their embrace, her true self is found.<br><br>
-
-        For the one that she loves, both strong and yet frail,<br>
-        Shares in the journey, through storm and through gale.<br>
-        Together they stand, in the dance of the brave,<br>
-        Two hearts intertwined, in the love that they crave.
-    </p>
-    <p> ~ehllenquezada </p>
-</div>
-
-<style>
-.poem-container {
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
-    border: 5px double black; /* Black border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Padding inside the box */
-    margin: 20px; /* Margin around the box */
-    max-width: 360px; /* Maximum width */
-    height: auto; /* Allow height to adjust based on content */
-    color: black; /* Text color */
-    text-align: left; /* Align text to the left */
-    position: fixed; /* Fixed position */
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-    overflow: auto; /* Allow scrolling if text overflows */
-    font-size: 13px;
-}
-</style>
-<style>
-.logo {
-    position: fixed;
-    display: block; /* Make it a block element */
-    margin: -310px auto 10px; /* Increased negative top margin to move it up more */
-    width: 100px; /* Set width */
-    height: 100px; /* Set height equal to width for a square */
-    border-radius: 0; /* No rounded corners */
-    z-index: 1000; /* Ensure it appears above other elements */
-    border: 10px solid black; /* Add a 2px ridge beige border */
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Create a diamond shape */
-    object-fit: cover; /* Ensure the image covers the diamond shape without distortion */
-}
-</style>
 
 
 
@@ -423,20 +430,8 @@ document.getElementById('song-select').addEventListener('change', function() {
  
 
 
-    <div class="love-letter">
-        <div class="envelope">
-            <div class="flap"></div>
-            <div class="body"></div>
-            <div class="heart">❤️</div>
-        </div>
-        <span class="click-to-open">MY INBOX</span>
-    </div>
-
-  
-
-<style>
-
- .modal {
+      <style>
+        .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
             z-index: 1000; /* Sit on top */
@@ -446,13 +441,13 @@ document.getElementById('song-select').addEventListener('change', function() {
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
             background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
-            font-family: open sans;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .modal-content {
             background-color: white;
             color: black;
-            font-family: open sans;
+            font-family: 'Open Sans', sans-serif;
             font-size: 15px;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
@@ -474,45 +469,139 @@ document.getElementById('song-select').addEventListener('change', function() {
             text-decoration: none;
             cursor: pointer;
         }
-    </style>
 
+       /* Keyframe animation for slow bouncing effect */
+@keyframes slowBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px); /* Move up */
+    }
+    60% {
+        transform: translateY(-5px); /* Move down slightly */
+    }
+}
+
+/* Style for the image */
+.love-letter img {
+    cursor: pointer; /* Change to pointer */
+    width: 160px; /* Set a width for the image */
+    height: 130px; /* Maintain aspect ratio */
+    margin-bottom: -40px; /* Adjust this value to move the image up */
+    animation: slowBounce 2s infinite; /* Apply the slow bounce animation */
+}
+
+
+    </style>
+</head>
+<body>
+
+
+
+<div class="poem-container">
+
+
+
+    <h2> "M" </h2>
+    <p>
+        She is the fearless one, a name well-known,<br>
+        Brave in spirit, yet secrets she’s sown.<br>
+        Beneath her strength, a softness resides,<br>
+        A hidden sorrow that she often hides.<br><br>
+
+        Most see her smile, a mask so bright,<br>
+        Yet shadows linger, veiled from sight.<br>
+        In moments of stillness, her heart feels the weight,<br>
+        Though her face bears no trace of the burdens of fate.<br><br>
+
+        Many admire her, drawn to her light,<br>
+        But one holds her heart, her true guiding light.<br>
+        A soul who transformed her, a love so profound,<br>
+        In their embrace, her true self is found.<br><br>
+
+        For the one that she loves, both strong and yet frail,<br>
+        Shares in the journey, through storm and through gale.<br>
+        Together they stand, in the dance of the brave,<br>
+        Two hearts intertwined, in the love that they crave.
+    </p>
+    <p> ~ehllenquezada </p>
+</div>
+
+<style>
+.poem-container {
+    background-color: #d2b48c; /* Light beige color for old paper */
+    border: 1px solid black; /* Light brown border */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 20px; /* Padding inside the box */
+    margin: 20px; /* Margin around the box */
+    max-width: 360px; /* Maximum width */
+    height: auto; /* Allow height to adjust based on content */
+    color: #333; /* Darker text color for better readability */
+    text-align: left; /* Align text to the left */
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Softer shadow for depth */
+    overflow: auto; /* Allow scrolling if text overflows */
+    font-size: 13px;
+    font-family: 'Georgia', serif; /* Use a serif font for a classic look */
+    background-image: url('path/to/your/texture.png'); /* Optional: Add a texture image */
+    background-size: cover; /* Cover the entire background */
+    background-blend-mode: multiply; /* Blend the texture with the background color */
+}
+</style>
+
+
+
+<div class="love-letter">
+    <img src="letterM.png" alt="Love Letter" />
+</div>
 
 <div id="greetingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <h5> 02/20/2025</h5>
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
 
 
-<p>
-
-
-Hello Greatest M, <br><br>
-I hope you like this webpage I have created for you,
-I picked the songs for your playlist and also I made a poem for you here.
-I'm sorry for hurting you, Master and L.
-I hope you like my simple present for you.
-<br><br>
-Love,
+<h2> Hope ya like it </h2>
+<p> M, This is now your new page hehe </p>
+<p>Love, <br>
+Elle 
+</p> 
 <br>
-Ehllen
-</p>
-        </div>
+<h5>02/20/2025</h5>
+        <p>
+            Hello Greatest M, <br><br>
+            I hope you like this webpage I have created for you,
+            I picked the songs for your playlist and also I made a poem for you here.
+            I'm sorry for hurting you, Master and L.
+            I hope you like my simple present for you.
+            <br><br>
+            Love,<br>
+            Ehllen
+        </p>
+
+
+        
+
+
     </div>
+</div>
 
-    <script>
-        // Function to open the modal
-        function openModal() {
-            document.getElementById("greetingModal").style.display = "block";
-        }
+<script>
+    // Function to open the modal
+    function openModal() {
+        document.getElementById("greetingModal").style.display = "block";
+    }
 
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById("greetingModal").style.display = "none";
-        }
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById("greetingModal").style.display = "none";
+    }
 
-        // Add event listener to the love letter emoji
-        document.querySelector('.love-letter').addEventListener('click', openModal);
-    </script>
+    // Add event listener to the love letter image
+    document.querySelector('.love-letter img').addEventListener('click', openModal);
+</script>
 
 
 
