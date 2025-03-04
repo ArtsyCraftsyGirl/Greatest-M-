@@ -154,6 +154,10 @@ button.active {
             <option value="25">26. Barracuda</option>
             <option value="26">27. OUTRO</option>
             <option value="27">28. Flightless bird american mouth</option>
+            <option value="28">29. BIRDS OF A FEATHER</option>
+            <option value="29">30. SHE</option>
+
+
         </select>
     </div>
 
@@ -267,6 +271,11 @@ button.active {
             { title: "26. Barracuda", artist:"Heart", src: "Heart - Barracuda.mp3" },
             { title: "27. OUTRO", artist:"M83", src: "M83 - OUTRO (Lyrics).mp3" },
             { title: "28. Flightless bird", artist:"Iron & Wine", src: "Flightless Bird, American Mouth.mp3" },
+            { title: "29. BIRDS OF A FEATHER", artist:"Billie Eilish", src: "Billie Eilish - BIRDS OF A FEATHER.mp3" },
+            { title: "30. SHE", artist:"She' (Lyrics).mp3", src: "Elvis Costello - 'She' (Lyrics).mp3" },
+
+
+
 
 
 
@@ -530,14 +539,14 @@ document.getElementById('song-select').addEventListener('change', function() {
 
 <style>
 .poem-container {
-    background-color: none; /* Light beige color for old paper */
-   
+    background-color: #d2b48c; /* Light beige color for old paper */
+    border: 1px solid black; /* Light brown border */
     border-radius: 5px; /* Slightly rounded corners */
     padding: 20px; /* Padding inside the box */
     margin: 20px; /* Margin around the box */
     max-width: 360px; /* Maximum width */
     height: auto; /* Allow height to adjust based on content */
-    color: beige; /* Darker text color for better readability */
+    color: #333; /* Darker text color for better readability */
     text-align: left; /* Align text to the left */
     position: fixed; /* Fixed position */
     bottom: 20px; /* Distance from the bottom */
@@ -545,9 +554,10 @@ document.getElementById('song-select').addEventListener('change', function() {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Softer shadow for depth */
     overflow: auto; /* Allow scrolling if text overflows */
     font-size: 13px;
-    font-family: verdana;
-    font-style: italic;
-  
+    font-family: 'Georgia', serif; /* Use a serif font for a classic look */
+    background-image: url('path/to/your/texture.png'); /* Optional: Add a texture image */
+    background-size: cover; /* Cover the entire background */
+    background-blend-mode: multiply; /* Blend the texture with the background color */
 }
 </style>
 
