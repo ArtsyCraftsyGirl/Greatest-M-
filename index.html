@@ -95,6 +95,13 @@ button.active {
     }
 }
 
+.small-button {
+    padding: 5px 10px; /* Adjust padding to make buttons smaller */
+    font-size: 12px; /* Adjust font size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Optional: add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
 </style>
 
 
@@ -113,15 +120,21 @@ button.active {
         <div class="current-song">
             <h2 id="song-title">One Last Song - A1</h2>
         </div>
-        <div class="controls">
-            <button id="play-btn">▶️</button>
-            <button id="pause-btn">⏸️</button>
-            <button id="stop-btn">⏹️</button>
- <button id="autoplay-btn" style="margin-top: 10px;">🔁 Go Autoplay</button> <!-- New Autoplay Button -->
+     <div class="controls">
+
+    <button id="play-btn" class="small-button">▶️</button>
+
+    <button id="pause-btn" class="small-button">⏸️</button>
+
+    <button id="stop-btn" class="small-button">⏹️</button>
+
+    <button id="autoplay-btn" class="small-button" style="margin-top: 10px;">🔁 Go Autoplay</button> <!-- New Autoplay Button -->
+
+</div>
         </div>
       <div class="navigation">
-    <button id="prev-btn">⏮️ Previous</button>
-    <button id="next-btn">Next ⏭️</button>
+    <button id="prev-btn" class="small-button">⏮️ Previous</button>
+    <button id="next-btn" class="small-button">Next ⏭️</button>
  
 </div>
 
