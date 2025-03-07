@@ -117,6 +117,7 @@ button.active {
             <button id="play-btn">▶️</button>
             <button id="pause-btn">⏸️</button>
             <button id="stop-btn">⏹️</button>
+            <button id="autoplay-btn">🔁 Autoplay</button> <!-- New Autoplay Button -->
         </div>
         <div class="navigation">
             <button id="prev-btn">⏮️ Previous</button>
@@ -292,43 +293,112 @@ button.active {
 
         ];
 
-        let currentSongIndex = 0;
-        const audio = document.getElementById('audio');
-        const songTitle = document.getElementById('song-title');
+     let currentSongIndex = 0;
 
-        function updateSong() {
-            audio.src = songs[currentSongIndex].src;
-            songTitle.textContent = `${songs[currentSongIndex].title} - ${songs[currentSongIndex].artist}`;
-            audio.load(); // Load the new song
-        }
+let isAutoplayEnabled = false; // Variable to track autoplay status
 
-        document.getElementById('play-btn').addEventListener('click', () => {
-            audio.play();
-        });
+const audio = document.getElementById('audio');
 
-        document.getElementById('pause-btn').addEventListener('click', () => {
-            audio.pause();
-        });
+const songTitle = document.getElementById('song-title');
 
-        document.getElementById('stop-btn').addEventListener('click', () => {
-            audio.pause();
-            audio.currentTime = 0;
-        });
 
-        document.getElementById('next-btn').addEventListener('click', () => {
-            currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop back to the first song
-            updateSong();
-            audio.play(); // Automatically play the next song
-        });
+function updateSong() {
 
-        document.getElementById('prev-btn').addEventListener('click', () => {
-            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop back to the last song
-            updateSong();
-            audio.play(); // Automatically play the previous song
-        });
+    audio.src = songs[currentSongIndex].src;
 
-        // Initialize the first song
+    songTitle.textContent = `${songs[currentSongIndex].title} - ${songs[currentSongIndex].artist}`;
+
+    audio.load(); // Load the new song
+
+}
+
+
+// Play button
+
+document.getElementById('play-btn').addEventListener('click', () => {
+
+    audio.play();
+
+});
+
+
+// Pause button
+
+document.getElementById('pause-btn').addEventListener('click', () => {
+
+    audio.pause();
+
+});
+
+
+// Stop button
+
+document.getElementById('stop-btn').addEventListener('click', () => {
+
+    audio.pause();
+
+    audio.currentTime = 0;
+
+});
+
+
+// Next button
+
+document.getElementById('next-btn').addEventListener('click', () => {
+
+    currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop back to the first song
+
+    updateSong();
+
+    audio.play(); // Automatically play the next song
+
+});
+
+
+// Previous button
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop back to the last song
+
+    updateSong();
+
+    audio.play(); // Automatically play the previous song
+
+});
+
+
+// Autoplay button
+
+document.getElementById('autoplay-btn').addEventListener('click', () => {
+
+    isAutoplayEnabled = !isAutoplayEnabled; // Toggle autoplay status
+
+    document.getElementById('autoplay-btn').textContent = isAutoplayEnabled ? '🔁 Autoplay On' : '🔁 Autoplay Off'; // Update button text
+
+});
+
+
+// Event listener for when the song ends
+
+audio.addEventListener('ended', () => {
+
+    if (isAutoplayEnabled) {
+
+        currentSongIndex = (currentSongIndex + 1) % songs.length; // Move to the next song
+
         updateSong();
+
+        audio.play(); // Automatically play the next song
+
+    }
+
+});
+
+
+// Initialize the first song
+
+updateSong();
     </script>
 
 
