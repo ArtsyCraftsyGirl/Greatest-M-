@@ -117,12 +117,13 @@ button.active {
             <button id="play-btn">▶️</button>
             <button id="pause-btn">⏸️</button>
             <button id="stop-btn">⏹️</button>
-            <button id="autoplay-btn">🔁 Autoplay</button> <!-- New Autoplay Button -->
+ <button id="autoplay-btn" style="margin-top: 10px;">🔁 Autoplay</button> <!-- New Autoplay Button -->
         </div>
-        <div class="navigation">
-            <button id="prev-btn">⏮️ Previous</button>
-            <button id="next-btn">Next ⏭️</button>
-        </div>
+      <div class="navigation">
+    <button id="prev-btn">⏮️ Previous</button>
+    <button id="next-btn">Next ⏭️</button>
+ 
+</div>
 
    <div class="jump-to-song">
         <label for="song-select">Jump to Song:</label>
@@ -218,7 +219,7 @@ button.active {
 
         button {
             background: linear-gradient(45deg, #ff0080, #00ffff, #00ff00, #ff00ff); /* Neon gradient */
-    background-size: 400% 400%; /* Make the gradient larger for animation */
+    background-size: 350% 350%; /* Make the gradient larger for animation */
     animation: gradient-animation 15s ease infinite; /* Animate the gradient */
     box-shadow: 0 0 20px rgba(255, 0, 128, 0.5), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 0, 0.5); /* Neon glow effect */
 
@@ -409,7 +410,7 @@ updateSong();
 <style>
 
 .jump-to-song {
-    top: 400px; /* Increase space above the dropdown to move it down */
+    top: 470px; /* Increase space above the dropdown to move it down */
     left: 50px; /* Move it to the right corner (adjust this value to move it right) */
     text-align: left; /* Align the dropdown to the left */
     z-index: 10; /* Ensure it appears above other elements */
