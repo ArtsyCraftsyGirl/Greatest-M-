@@ -611,56 +611,7 @@ document.getElementById('song-select').addEventListener('change', function() {
 
 
 
-<div class="poem-container">
 
-
-
-    <h2> "M" </h2>
-    <p>
-        She is the fearless one, a name well-known,<br>
-        Brave in spirit, yet secrets she’s sown.<br>
-        Beneath her strength, a softness resides,<br>
-        A hidden sorrow that she often hides.<br><br>
-
-        Most see her smile, a mask so bright,<br>
-        Yet shadows linger, veiled from sight.<br>
-        In moments of stillness, her heart feels the weight,<br>
-        Though her face bears no trace of the burdens of fate.<br><br>
-
-        Many admire her, drawn to her light,<br>
-        But one holds her heart, her true guiding light.<br>
-        A soul who transformed her, a love so profound,<br>
-        In their embrace, her true self is found.<br><br>
-
-        For the one that she loves, both strong and yet frail,<br>
-        Shares in the journey, through storm and through gale.<br>
-        Together they stand, in the dance of the brave,<br>
-        Two hearts intertwined, in the love that they crave.
-    </p>
-    <p> ~ehllenquezada </p>
-</div>
-
-<style>
-.poem-container {
-    background-color: none; /* Light beige color for old paper */
-    border-radius: 5px; /* Slightly rounded corners */
-    padding: 20px; /* Padding inside the box */
-    margin: 20px; /* Margin around the box */
-    max-width: 360px; /* Maximum width */
-    height: auto; /* Allow height to adjust based on content */
-    color: beige; /* Darker text color for better readability */
-    text-align: left; /* Align text to the left */
-    position: fixed; /* Fixed position */
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    
-    overflow: auto; /* Allow scrolling if text overflows */
-    font-size: 13px;
-    font-family: Monospace;
-    font-style: italic;
-   
-}
-</style>
 
 
 
@@ -687,6 +638,30 @@ document.getElementById('song-select').addEventListener('change', function() {
             Ehllen
         </p>
 
+  <h2> "M" </h2>
+    <p>
+        She is the fearless one, a name well-known,<br>
+        Brave in spirit, yet secrets she’s sown.<br>
+        Beneath her strength, a softness resides,<br>
+        A hidden sorrow that she often hides.<br><br>
+
+        Most see her smile, a mask so bright,<br>
+        Yet shadows linger, veiled from sight.<br>
+        In moments of stillness, her heart feels the weight,<br>
+        Though her face bears no trace of the burdens of fate.<br><br>
+
+        Many admire her, drawn to her light,<br>
+        But one holds her heart, her true guiding light.<br>
+        A soul who transformed her, a love so profound,<br>
+        In their embrace, her true self is found.<br><br>
+
+        For the one that she loves, both strong and yet frail,<br>
+        Shares in the journey, through storm and through gale.<br>
+        Together they stand, in the dance of the brave,<br>
+        Two hearts intertwined, in the love that they crave.
+    </p>
+    <p> ~ehllenquezada </p>
+
 
         
 
@@ -708,6 +683,95 @@ document.getElementById('song-select').addEventListener('change', function() {
     // Add event listener to the love letter image
     document.querySelector('.love-letter img').addEventListener('click', openModal);
 </script>
+
+
+
+<style>
+        .textbox {
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Distance from the bottom of the page */
+            right: 20px; /* Distance from the right of the page */
+            width: 300px; /* Fixed width for the textbox */
+            height: 120px; /* Fixed height for the textbox */
+           
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the textbox */
+            background-color: none; /* Background color of the textbox */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            text-align: center; /* Center text inside the textbox */
+            z-index: 1000; /* Ensure it appears above other elements */
+           
+        }
+        .poem {
+            font-size: 25px;
+            color: white;
+            margin: 20px 0;
+            transition: opacity 0.5s ease;
+        }
+        #author {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="textbox">
+    <div class="poem" id="poem"></div>
+    <div id="author"></div>
+</div>
+
+<script>
+    const poems = [
+        "People may think they know your soul,",
+        "Yet I wonder if they truly see the whole.",
+        "Perhaps just fragments of you, scattered and few,",
+        "With layers upon layers—waiting to break through.",
+        "I ponder what truly stirs your heart's desire—",
+        "Do you like the ice or the fire?",
+        "Will there be a cost to see your naked smile?",
+        "I wonder why it feels so worth the while.",
+        "I know when shadows loom and you feel alone,",
+        "I know your quiet scream— it hits me to the bone.",
+        "I know what demons can do,",
+        "But now you won't face the darkness alone—",
+        "I'll wrap my arms around you,",
+        "You'll find a way back home.",
+        "But just like rivers to the sea,",
+        "I know it takes time to see me.",
+        "You are a warrior, clad in armor bright,",
+        "Yet beneath the steel— your soul craves the light. ",
+        "BENEATH THE STEEL",
+         "A poem written by: Ehllen Quezada"
+
+
+    ];
+
+    let currentIndex = 0;
+
+    function showPoem() {
+        const poemElement = document.getElementById('poem');
+        poemElement.innerHTML = poems[currentIndex];
+
+      
+    }
+
+    function nextPoem() {
+        currentIndex = (currentIndex + 1) % poems.length;
+        showPoem();
+    }
+
+    // Show the first poem on page load
+    showPoem();
+
+    // Change the poem every 5 seconds (5000 milliseconds)
+    setInterval(nextPoem, 5000);
+</script>
+
+
+
+
+
 
 
 
