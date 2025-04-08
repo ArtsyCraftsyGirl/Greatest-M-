@@ -583,24 +583,11 @@ document.getElementById('song-select').addEventListener('change', function() {
             cursor: pointer;
         }
 
-       /* Keyframe animation for slow bouncing effect */
-@keyframes slowBounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-8px); /* Move up */
-    }
-    60% {
-        transform: translateY(-5px); /* Move down slightly */
-    }
-}
-
 /* Style for the image */
 .love-letter img {
     cursor: pointer; /* Change to pointer */
-    width: 160px; /* Set a width for the image */
-    height: 130px; /* Maintain aspect ratio */
+    width: 155px; /* Set a width for the image */
+    height: 115px; /* Maintain aspect ratio */
     margin-bottom: -35px; /* Adjust this value to move the image up */
     animation: slowBounce 2s infinite; /* Apply the slow bounce animation */
 }
