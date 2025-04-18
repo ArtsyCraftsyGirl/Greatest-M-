@@ -209,11 +209,12 @@ button.active {
             padding: 10px;
         }
 
-   .container {
+  .container {
     text-align: left; /* Align text to the left */
-    background: black;
+    background-image: url('untitled.jpg'); /* Set the background image */
     background-size: cover; /* Cover the entire container */
     background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
     padding: 20px; /* Padding inside the container */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
@@ -245,12 +246,19 @@ button.active {
             margin: 20px 0;
         }
 
-        button {
-            background: linear-gradient(45deg, #ff0080, #00ffff, #00ff00, #ff00ff); /* Neon gradient */
-    background-size: 350% 350%; /* Make the gradient larger for animation */
+  button {
+    background: linear-gradient(45deg, darkred, black, red, black); /* Fiery red gradient */
+    background-size: 310% 310%; /* Make the gradient larger for animation */
     animation: gradient-animation 15s ease infinite; /* Animate the gradient */
-    box-shadow: 0 0 20px rgba(255, 0, 128, 0.5), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 0, 0.5); /* Neon glow effect */
-
+        color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for the button */
+    margin: 0 5px; /* Margin around the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 16px; /* Font size */
+    transition: background 0.3s, transform 0.2s; /* Smooth transition for hover effect */
+}
 
 @keyframes gradient-animation {
     0% {
@@ -263,18 +271,13 @@ button.active {
         background-position: 0% 50%;
     }
 }
-            color: black;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin: 0 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
 
-        button:hover {
-            background: #0056b3;
-        }
+button:hover {
+    background: linear-gradient(45deg, #ff6347, #ff4500, #ff7f50, red); /* Change gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+        
     </style>
 
      <script>
