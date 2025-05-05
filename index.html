@@ -302,7 +302,8 @@ button:hover {
 
     </style>
 
- <script>
+
+<script>
     const songs = [
         { id: "E", title: "1. She's Everything", artist: "Brad Paisley", src: "Brad Paisley - She's Everything (Lyrics).mp3" },
         { id: "E", title: "2. Stop & Stare", artist: "OneRepublic", src: "Stop & Stare - OneRepublic (Lyrics).mp3" },
@@ -507,8 +508,6 @@ button:hover {
     }
 
 </script>
-
-
 
 
 
@@ -804,7 +803,7 @@ document.getElementById('song-select').addEventListener('change', function() {
         }
         .poem {
             font-size: 25px;
-            color: white;
+            color: beige;
             margin: 20px 0;
             transition: opacity 0.5s ease;
         }
@@ -918,6 +917,93 @@ document.getElementById('song-select').addEventListener('change', function() {
         alert("SORRY! BUT GAMES & PHOTOS ARE NOT AVAILABLE YET.");
     }
 </script>
+
+<style>
+.vinyl-container {
+  position: fixed; /* Use fixed positioning to keep it in the same place on the screen */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust to truly center the element */
+  width: 250px; /* Image width + 2 * border thickness */
+  height: 250px; /* Image height + 2 * border thickness */
+  border-radius: 50%;
+  background-color: black;
+  overflow: hidden;
+  z-index: 50; /* Give it a high z-index so it appears above most other elements */
+}
+
+.vinyl-image {
+  /* Adjusted size to fit within the transparent center area */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  animation: spin 20s linear infinite;
+  transform-origin: 50% 50%;
+  z-index: 1; /* Ensure the image is above the pseudo-element */
+
+  /* Centering the image within the container - This was already correct */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+
+  /* Add border properties */
+  border: 10px solid #e1cc9e; /* Adjust thickness as needed */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+/* Pseudo-element for the concentric circles pattern applied to the container */
+.vinyl-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 0; /* Place the pseudo-element behind the image */
+}
+
+/* Optional: Add inner solid circles using pseudo-elements on the container */
+.vinyl-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
+/* Animation for the main vinyl spin */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.no-spin {
+    animation: none; /* Disable animation */
+}
+
+</style>
+</head>
+<body>
+
+<div class="vinyl-container">
+  <img src="E.jpg" alt="Spinning Vinyl" class="vinyl-image">
+</div>
 
 
 
