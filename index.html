@@ -102,6 +102,21 @@ button.active {
     border-radius: 5px; /* Optional: add rounded corners */
     cursor: pointer; /* Change cursor to pointer on hover */
 }
+
+
+/* Style for the new container to stack controls vertically and position them properly */
+.controls-container {
+    position: fixed;
+    top: 470px; /* Adjust based on your layout; ensure it's below the jump-to-song dropdown */
+    left: 50px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    gap: 10px; /* Space between elements */
+    z-index: 5; /* Keep below other overlays if needed */
+    background-color: transparent; /* Optional: background for clarity */
+}
+
+
 </style>
 
 
@@ -111,7 +126,8 @@ button.active {
 
 
 
- <div class="animated-text">" You are loved "
+
+ <div class="animated-text">" Never give up "
  </div> 
 
 <div class="container">
@@ -124,6 +140,8 @@ button.active {
         <button id="play-btn">▶️</button>
         <button id="pause-btn">⏸️</button>
         <button id="stop-btn">⏹️</button>
+
+
       
     </div>
     <div class="navigation">
@@ -200,24 +218,146 @@ button.active {
         </select>
     </div>
 
+<!-- Container for filter, volume, and slider -->
+<div class="controls-container">
+  <!-- Filter options -->
+  <div class="filter-options">
+    <label><input type="radio" name="song-filter" value="all" checked> Show All</label>
+    <label><input type="radio" name="song-filter" value="E"> E songs</label>
+    <label><input type="radio" name="song-filter" value="M"> M songs</label>
+  </div>
+  
+  <!-- Volume control -->
+ <div class="volume-control" style="display: flex; align-items: flex-start;">
+<img src="volume.png" alt="Volume" title="Volume" style="cursor: pointer; width: 25px; height: auto; margin-top: 10px;">
+   <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" style="width: 100px; margin-left: 5px; margin-top: 22px;">
+</div>
+  
+  <!-- Song seek slider -->
+<div class="song-slider-control" style="display: flex; align-items: center; margin-top: 10px;">
+ <img src="notes.png" alt="Seek" title="Seek" style="width: 30px; height: auto; margin-right: 5px; cursor: pointer; margin-top: -15px; margin-left: -5px;">
+  <input type="range" id="song-slider" value="0" min="0" max="100" step="1" style="width: 200px; margin-left: -3px; margin-top: -15px;">
+</div>
+</div>
 
- <!-- Add the filter options HTML here -->
-    <div class="filter-options">
-        <label><input type="radio" name="song-filter" value="all" checked> Show All</label>
-        <label><input type="radio" name="song-filter" value="E"> E songs</label>
-        <label><input type="radio" name="song-filter" value="M"> M songs</label>
-    </div>
 
 
 
-
-
-
-
-
-    </div>
 
     <audio id="audio" src="Brad Paisley - She's Everything (Lyrics).mp3"></audio>
+
+
+
+<style>
+   #song-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 200px;
+    height: 4px; /* base height, can adjust */
+  }
+
+  /* WebKit browsers (Chrome, Safari, Edge) */
+  #song-slider::-webkit-slider-runnable-track {
+    background: #4CAF50; /* Track color */
+    height: 4px; /* Track height */
+    border-radius: 2px;
+  }
+  #song-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 12px; /* Thumb size */
+    width: 12px;
+    background: #ff0000; /* Thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -4px; /* Align thumb vertically with track */
+  }
+
+  /* Firefox */
+  #song-slider::-moz-range-track {
+    background: #4CAF50; /* Track color */
+    height: 4px;
+    border-radius: 2px;
+  }
+  #song-slider::-moz-range-thumb {
+    height: 12px;
+    width: 12px;
+    background: #ff0000; /* Thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  /* IE / Edge legacy */
+  #song-slider::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    height: 4px;
+  }
+  #song-slider::-ms-thumb {
+    height: 12px;
+    width: 12px;
+    background: #ff0000; /* Thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+
+ /* WebKit browsers (Chrome, Safari, Edge) */
+#volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 200px; /* your slider width */
+  height: 4px; /* fallback height */
+}
+#volume-slider::-webkit-slider-runnable-track {
+  height: 4px; /* thinner track */
+  background: #4CAF50; /* your track color */
+  border-radius: 2px;
+}
+#volume-slider::-webkit-slider-thumb {
+  height: 12px; /* smaller thumb */
+  width: 12px;
+  margin-top: -4px; /* centers thumb vertically over the track */
+  background: #333; /* thumb color */
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none; /* remove default */
+  appearance: none;
+}
+
+/* Firefox */
+#volume-slider::-moz-range-track {
+  height: 4px; /* thinner track */
+  background: #4CAF50; /* your track color */
+  border-radius: 2px;
+}
+#volume-slider::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  background: #333; /* thumb color */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* IE / Edge legacy */
+#volume-slider::-ms-track {
+  height: 4px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#volume-slider::-ms-thumb {
+  height: 12px;
+  width: 12px;
+  background: #333; /* thumb color */
+  border-radius: 50%;
+  cursor: pointer;
+}
+</style>
+
+
+
 
     <style>
         body {
@@ -301,6 +441,35 @@ button:hover {
 
 
     </style>
+
+<script>
+
+const volumeSlider = document.getElementById('volume-slider');
+const songSlider = document.getElementById('song-slider');
+// Update the slider as the song plays
+audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+        const value = (audio.currentTime / audio.duration) * 100; // Calculate percentage
+        songSlider.value = value; // Update slider value
+    }
+});
+// Seek to the selected position when the slider is changed
+songSlider.addEventListener('input', () => {
+    const newTime = (songSlider.value / 100) * audio.duration; // Calculate new time
+    audio.currentTime = newTime; // Update audio current time
+});
+
+
+// Set initial volume
+audio.volume = volumeSlider.value;
+// Update audio volume when slider changes
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value;
+});
+
+
+</script>
+
 
 
 <script>
