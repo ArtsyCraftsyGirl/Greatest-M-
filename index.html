@@ -83,6 +83,7 @@ button.active {
     border-radius: 5px; /* Rounded corners */
     color: #ffffff; /* Neon white color */
     font-size: 24px; /* Font size */
+    font-family: calibri;
     animation: neon 1.5s ease-in-out infinite alternate; /* Animation */
 }
 
@@ -127,7 +128,7 @@ button.active {
 
 
 
- <div class="animated-text">" Never give up "
+ <div class="animated-text">" You are loved, <br> hugs & kisses"
  </div> 
 
 <div class="container">
@@ -236,7 +237,7 @@ button.active {
   <!-- Song seek slider -->
 <div class="song-slider-control" style="display: flex; align-items: center; margin-top: 10px;">
  <img src="notes.png" alt="Seek" title="Seek" style="width: 30px; height: auto; margin-right: 5px; cursor: pointer; margin-top: -15px; margin-left: -5px;">
-  <input type="range" id="song-slider" value="0" min="0" max="100" step="1" style="width: 200px; margin-left: -3px; margin-top: -15px;">
+  <input type="range" id="song-slider" value="0" min="0" max="100" step="1" style="width: 100px; margin-left: -3px; margin-top: -15px;">
 </div>
 </div>
 
@@ -474,8 +475,8 @@ volumeSlider.addEventListener('input', () => {
 
 <script>
     const songs = [
-        { id: "E", title: "1. She's Everything", artist: "Brad Paisley", src: "Brad Paisley - She's Everything (Lyrics).mp3" },
-        { id: "E", title: "2. Stop & Stare", artist: "OneRepublic", src: "Stop & Stare - OneRepublic (Lyrics).mp3" },
+        { id: "E", title: "1. Talk Talk", artist: "TALK TALK", src: "Talk Talk - TALK TALK - 1982.mp3" },
+        { id: "E", title: "2. Turn around look at me", artist: "E", src: "Turn around look at me Glenn Campbell Cover By_ Ehllen Quezada.mp3" },
         { id: "E", title: "3. Sweet Disposition", artist: "The Temper Trap", src: "The Temper Trap - Sweet Disposition (lyrics).mp3" },
         { id: "E", title: "4. Closing Time", artist: "Semisonic", src: "Closing Time Semisonic Lyrics.mp3" },
         { id: "E", title: "5. Kiss From A Rose", artist: "Seal", src: "Seal - Kiss From A Rose (Lyrics).mp3" },
@@ -885,50 +886,18 @@ document.getElementById('song-select').addEventListener('change', function() {
 
 <br>
 
-        <h5>04/12/2025</h5>
-        <p>
-            Hello Greatest M, <br><br>
-            hehe I hope you like some of the songs in your playlist n the little update on your page.
-            <br><br>
-            Love,<br>
-            E
-        </p>
         
-<h5>02/20/2025</h5>
+        
+<h5>06/01/2025</h5>
         <p>
-            Hello Greatest M, <br><br>
-            I hope you like this webpage I have created for you,
-            I picked the songs for your playlist and also I made a poem for you here.
-            I'm sorry for hurting you, Master and L.
-            I hope you like my simple present for you.
+            Hello Dear Misty, <br><br>
+            Muah, I hope you like the new updates here.
             <br><br>
             Love,<br>
             Ehllen
         </p>
 
-  <h2> "M" </h2>
-    <p>
-        She is the fearless one, a name well-known,<br>
-        Brave in spirit, yet secrets she’s sown.<br>
-        Beneath her strength, a softness resides,<br>
-        A hidden sorrow that she often hides.<br><br>
 
-        Most see her smile, a mask so bright,<br>
-        Yet shadows linger, veiled from sight.<br>
-        In moments of stillness, her heart feels the weight,<br>
-        Though her face bears no trace of the burdens of fate.<br><br>
-
-        Many admire her, drawn to her light,<br>
-        But one holds her heart, her true guiding light.<br>
-        A soul who transformed her, a love so profound,<br>
-        In their embrace, her true self is found.<br><br>
-
-        For the one that she loves, both strong and yet frail,<br>
-        Shares in the journey, through storm and through gale.<br>
-        Together they stand, in the dance of the brave,<br>
-        Two hearts intertwined, in the love that they crave.
-    </p>
-    <p> ~ehllenquezada </p>
 
 
         
@@ -975,6 +944,7 @@ document.getElementById('song-select').addEventListener('change', function() {
             color: beige;
             margin: 20px 0;
             transition: opacity 0.5s ease;
+            font-family: calibri;
         }
         #author {
             margin-top: 30px;
@@ -1039,8 +1009,9 @@ document.getElementById('song-select').addEventListener('change', function() {
 
 
 <div class="icon-container">
-    <img src="quiz.png" alt="Quiz Icon" class="quiz" onclick="showMessage()">
+    <img src="quiz.png" alt="Start Quiz" class="quiz" onclick="showIntroPage()" />
     <img src="cam.png" alt="Photo Icon" class="gallery" onclick="showMessage()">
+    <img src="poem.png" alt="Poetry Icon" class="poetry" onclick="openPoemTable()">
 </div>
 
 <style>
@@ -1076,6 +1047,19 @@ document.getElementById('song-select').addEventListener('change', function() {
     transform: scale(1.3); /* Slightly enlarge the image on hover */
 }
 
+.poetry {
+    width: 60px;
+    height: auto; /* maintain aspect ratio if needed */
+    max-height: 40px; /* optional: limit height */
+    margin-top: 8px;
+
+  }
+
+.poetry:hover {
+    transform: scale(1.3);
+    transition: transform 0.2s ease;
+}
+
 
 </style>
 
@@ -1083,10 +1067,421 @@ document.getElementById('song-select').addEventListener('change', function() {
 
 <script>
     function showMessage() {
-        alert("SORRY! BUT GAMES & PHOTOS ARE NOT AVAILABLE YET.");
+        alert("SORRY! BUT PHOTOS ARE NOT AVAILABLE YET.");
     }
 </script>
 
+
+<!-- Intro Page -->
+<div id="introPage" style="
+  text-align: center;
+  padding: 40px;
+  background-color: #73c0db;
+  color: black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: none;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  width: 80%;
+  max-width: 420px;
+  position: fixed;
+">
+ <!-- Close Button -->
+<span onclick="document.getElementById('introPage').style.display = 'none'" style="
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+">&times;</span>
+
+
+  <h2>QUIZ: HOW WELL DO YOU KNOW ME?</h2>
+  <h2>Level 1</h2>
+  <div style="margin: 20px 0;">
+    <label for="introName">Enter your name: </label>
+    <input type="text" id="introName" placeholder="enter name & click start" />
+  </div>
+  <div 
+    style="display:inline-block; padding:15px 10px; background-color:#a45438; color:#fff; border-radius:8px; cursor:pointer; font-size:12px;"
+    onclick="startQuiz()">
+    START THE QUIZ
+  </div>
+</div>
+
+
+<!-- Quiz Modal -->
+<div id="quizModal" class="modal" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1000;">
+  <div class="modal-content" style="margin: 50px auto; background: #73c0db; padding: 20px; border-radius: 10px; width: 600px; max-height: 80%; overflow-y: auto;">
+    <span class="close-button" onclick="closeQuiz()" style="float: right; cursor:pointer; font-size:24px;">×</span>
+    <h2 style="text-align: center;">HOW WELL DO YOU KNOW ME?</h2>
+    <h2 style="text-align: center;">Level 1</h2>
+    
+    <div id="quizQuestions" style="margin-top: 20px;"></div>
+    
+    <div onclick="submitQuiz()" style="margin-top: 20px; display: block; margin-left: auto; margin-right: auto; background-color: #a45438; color: white; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; text-align: center; width: fit-content;">Submit</div>
+  </div>
+</div>
+
+<!-- Result display -->
+
+<div id="quizResult" style="
+  display: none;
+  position: fixed;
+  bottom: 220px; /* moved up a bit */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #80d6d4;
+  color: white;
+  padding: 25px 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  z-index: 100;
+  width: 340px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Segoe UI', sans-serif; color: black;
+">
+  <h3 style="font-size: 22px; margin-bottom: 10px;">🎉 Test Results</h3>
+  <p id="resultText" style="margin-bottom: 20px;"></p>
+
+<!-- Wrap the outside result buttons -->
+<div id="outsideResultButtons" style="display: none; position: fixed; top: 10px; left: 20px; z-index: 100;">
+  <div onclick="closeResult()" style="cursor:pointer; padding:10px; background-color:#ccc; border-radius:5px;">Close</div>
+  <div onclick="resetQuiz()" style="cursor:pointer; padding:10px; background-color:#f44336; color:white; border-radius:5px; margin-top:5px;">Reset</div>
+</div>
+
+
+
+
+  <h3>Test Results</h3>
+  <p id="resultText"></p>
+  <div onclick="closeResult()" style="cursor:pointer; padding:10px; background-color:#ccc; border-radius:5px; display:inline-block;">Close</div>
+  <div onclick="resetQuiz()" style="cursor:pointer; padding:10px; background-color:#f44336; color:white; border-radius:5px; display:inline-block; margin-left: 10px;">Reset</div>
+</div>
+
+<script>
+  const quizQuestions = [
+    { question: "What are my hobbies?", options: ["Drawing, Singing, Writing", "Dancing & Acting", "All of the above", "Just eating lol"], answer: "Drawing, Singing, Writing" },
+    { question: "What is my favorite movie?", options: ["Titanic", "Twilight", "Harry Potter", "Fifty Shades of Grey"], answer: "Twilight" },
+    { question: "What makes me cry?", options: ["Can be anything it depends on my mood", "Only Onion", "Mother's megaphone voice", "Watching Batang Quiapo"], answer: "Can be anything it depends on my mood" },
+    { question: "Who is my favorite poet?", options: ["Edgar Allan Poe", "Stephanie Meyer", "Sha Nazino", "Jose Rizal"], answer: "Edgar Allan Poe" },
+    { question: "Which animal do I love most?", options: ["Dog", "Cat", "Bird", "Fish"], answer: "Dog" },
+    { question: "What's my favorite food?", options: ["Bitter melon", "Beef stew", "Chicken feet", "Fish stew"], answer: "Beef stew" },
+    { question: "What annoys me?", options: ["Repeating myself", "Mother's rant", "Slow internet/device loading", "Lack of sleep"], answer: "Slow internet/device loading" },
+    { question: "What attracts me the most in a person?", options: ["Physical appearance", "Intelligence", "Humility", "Kindness"], answer: "Intelligence" },
+    { question: "I am really good at?", options: ["Dancing in the C.R", "Eating nonstop", "Hiding feelings", "Socializing"], answer: "Hiding feelings" },
+    { question: "When I'm sad this is what I do?", options: ["I go somewhere with friends", "I am quiet & isolate myself", "I sleep often", "I go to church"], answer: "I am quiet & isolate myself" },
+    { question: "Who's my girl crush/idol?", options: ["Kristen Stewart", "Emma Watson", "Leighton Meester", "Megan Fox"], answer: "Kristen Stewart" },
+    { question: "Who's my idol in singing?", options: ["Regine Velasquez", "Charice Pempengco", "Morisette Amon", "Klarisse De guzman"], answer: "Charice Pempengco" },
+    { question: "What makes me happy most?", options: ["Sleeping", "Watching movies/dramas", "Chatting with someone I like/love", "Money"], answer: "Chatting with someone I like/love" },
+    { question: "People dont know that I have?", options: ["Can't sleep w/o rubbing my feet on a smooth fabric", "I have a Phonophobia", "I am bisexual", "All of the above"], answer: "All of the above" }
+  ];
+
+  function showIntroPage() {
+    const storedResult = localStorage.getItem('quizResult');
+    if (storedResult) {
+      // ✅ Use innerHTML instead of innerText to properly render <strong>, <br>, etc.
+      document.getElementById('resultText').innerHTML = storedResult;
+      document.getElementById('quizResult').style.display = 'block';
+    } else {
+      document.getElementById('introPage').style.display = 'block';
+    }
+  }
+
+  function startQuiz() {
+    const nameInput = document.getElementById('introName').value.trim();
+    window.userName = nameInput || 'Anonymous';
+
+    document.getElementById('introPage').style.display = 'none';
+    document.getElementById('quizModal').style.display = 'block';
+    loadQuizQuestions();
+  }
+
+  function closeQuiz() {
+    document.getElementById('quizModal').style.display = 'none';
+  }
+
+  function loadQuizQuestions() {
+    const container = document.getElementById('quizQuestions');
+    container.innerHTML = '';
+
+    quizQuestions.forEach((q, index) => {
+      const qDiv = document.createElement('div');
+      qDiv.style.marginBottom = '15px';
+
+      const qTitle = document.createElement('div');
+      qTitle.innerHTML = `<strong>Q${index + 1}: ${q.question}</strong>`;
+      qDiv.appendChild(qTitle);
+
+      q.options.forEach(opt => {
+        const label = document.createElement('label');
+        label.style.display = 'block';
+        label.style.marginLeft = '20px';
+
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = `question${index}`;
+        radio.value = opt;
+
+        label.appendChild(radio);
+        label.appendChild(document.createTextNode(` ${opt}`));
+        qDiv.appendChild(label);
+      });
+
+      container.appendChild(qDiv);
+    });
+  }
+
+  function submitQuiz() {
+    const name = window.userName || 'Anonymous';
+    let score = 0;
+
+    // Check if all questions are answered
+    for (let index = 0; index < quizQuestions.length; index++) {
+      const selected = document.querySelector(`input[name="question${index}"]:checked`);
+      if (!selected) {
+        alert("Sorry, please finish all the test.");
+        return;
+      }
+    }
+
+    // Calculate score
+    quizQuestions.forEach((q, index) => {
+      const selected = document.querySelector(`input[name="question${index}"]:checked`);
+      if (selected && selected.value === q.answer) {
+        score++;
+      }
+    });
+
+    // Result logic
+    const passed = score >= 7;
+    const resultStatus = passed ? " PASSED" : " FAILED";
+    const message = passed
+      ? "I’m genuinely touched — you really know me well."
+      : "That was fun! Want to learn more about me and try again?";
+
+    const resultMsg = `
+      <strong>RESULTS: ${resultStatus}</strong><br>
+      Score: ${score}/${quizQuestions.length}<br><br>
+      <strong>${name}</strong>,<br>${message}
+    `;
+
+    document.getElementById('resultText').innerHTML = resultMsg;
+    document.getElementById('quizResult').style.display = 'block';
+
+    localStorage.setItem('quizResult', resultMsg);
+    closeQuiz();
+  }
+
+  function closeResult() {
+    document.getElementById('quizResult').style.display = 'none';
+  }
+
+  function resetQuiz() {
+  alert("Sorry, this needs admin's approval.");
+}
+
+</script>
+
+
+
+<!-- Poem Table -->
+<div id="poemTable" class="poem-table" style="display: none;">
+    <div class="table-content">
+        <span class="close" onclick="closePoemTable()" style="position: absolute; top: 2px; right: 15px; color: #aaa; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+       <h2 id="poemTitle" style="color: #ca3c25;">THE NIGHT, I REMEMBERED WHO LIORA WAS</h2>
+<h4 style="color: #ca3c25;">Poem written by: Ehllen Quezada</h4>
+
+        <div id="poemText"></div>
+        <div class="navigation">
+            <div class="poem-prev" onclick="changePoem(-1)">Previous</div>
+            <div class="poem-next" onclick="changePoem(1)">Next</div>
+        </div>
+<div id="pageCount" style="margin-top:10px; font-weight:bold; text-align:center;"> </div>
+    </div>
+</div>
+
+<script>
+const poemsMisty = [
+    {
+        title: "M",
+        text: [
+            "She is the fearless one, a name well-known,",
+            "Brave in spirit, yet secrets she’s sown.",
+            "Beneath her strength, a softness resides,",
+            "A hidden sorrow that she often hides.",
+            "",
+            "Most see her smile, a mask so bright,",
+            "Yet shadows linger, veiled from sight.",
+            "In moments of stillness, her heart feels the weight,",
+            "Though her face bears no trace of the burdens of fate.",
+            "",
+            "Many admire her, drawn to her light,",
+            "But one holds her heart, her true guiding light.",
+            "A soul who transformed her, a love so profound,",
+            "In their embrace, her true self is found.",
+            "",
+            "For the one that she loves, both strong and yet frail,",
+            "Shares in the journey, through storm and through gale.",
+            "Together they stand, in the dance of the brave,",
+           
+            "",
+            "Two hearts intertwined, in the love that they crave.",
+            ""
+        ],
+        
+    },
+    {
+        title: "BENEATH THE STEEL",
+        text: [
+            "People may think they know your soul",
+            "Yet I wonder if they truly see the whole.",
+            "Perhaps just fragments of you, scattered and few,",
+            "With layers upon layers—waiting to break through.",
+            "",
+            "I ponder what truly stirs your heart's desire—",
+            "Do you like the ice or the fire?",
+            "Will there be a cost to see your naked smile?",
+            "I wonder why it feels so worth the while.",
+            "",
+            "I know when shadows loom and you feel alone,",
+            "I know your quiet scream— it hits me to the bone.",
+            "I know what demons can do,",
+            "But now you won't face the darkness alone—",
+            "",
+            "I'll wrap my arms around you,",
+            "You'll find a way back home.",
+            "But just like rivers to the sea,",
+            "I know it takes time to see me.",
+            "",
+            "You are a warrior, clad in armor bright,",
+            "Yet beneath the steel— your soul craves the light.",
+        ],
+        
+    }
+];
+
+let currentPoemIndex = 0;
+
+function openPoemTable() {
+    document.getElementById('poemTable').style.display = 'block'; // Show the table
+    showPoem(currentPoemIndex); // Show the first poem
+}
+
+function closePoemTable() {
+    document.getElementById('poemTable').style.display = 'none'; // Hide the table
+}
+
+function showPoem(index) {
+    const poemTitle = document.getElementById('poemTitle');
+    const poemText = document.getElementById('poemText');
+    
+    poemTitle.innerHTML = poemsMisty[index].title;
+    poemText.innerHTML = poemsMisty[index].text.join('<br>'); // Join lines with line breaks
+}
+
+function changePoem(direction) {
+    const poemText = document.getElementById('poemText');
+    const currentPoem = poems[currentPoemIndex];
+
+    // Fade out current poem
+    poemText.classList.add('fade-out');
+
+    setTimeout(() => {
+        currentPoemIndex += direction; // Update the index based on direction
+        if (currentPoemIndex < 0) {
+            currentPoemIndex = 0; // Prevent going below the first poem
+        } else if (currentPoemIndex >= poemsMisty.length) {
+            currentPoemIndex = poemsMisty.length - 1; // Prevent going above the last poem
+        }
+        showPoem(currentPoemIndex); // Show the updated poem
+        poemText.classList.remove('fade-out'); // Fade in new poem
+    }, 300); // Match this timeout with the CSS transition duration
+}
+
+
+
+function showPoem(index) {
+    const poemTitle = document.getElementById('poemTitle');
+    const poemText = document.getElementById('poemText');
+    const pageCount = document.getElementById('pageCount');
+
+    poemTitle.innerHTML = poemsMisty[index].title;
+    poemText.innerHTML = poemsMisty[index].text.join('<br>');
+
+    // Automatically calculate total pages and current page
+    const totalPages = poemsMisty.length;
+    const currentPage = index + 1;
+
+    // Display the page info
+    pageCount.innerHTML = `Page ${currentPage} of ${totalPages}`;
+}
+</script>
+
+<style>
+.poem-table {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #bdf3f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 20px;
+    width: 500px; /* Fixed width */
+    height: 580px; /* Fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    font-size: 17px;
+    font-style: bold;
+}
+
+.table-content {
+    text-align: left;
+    color: black; /* All text inside will be black */
+    font-family: calibri;
+}
+
+.poem-prev, .poem-next {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ae300c;
+    color: black;
+    border: 2px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.poem-prev:hover, .poem-next:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Active (click) effect */
+.poem-prev:active, .poem-next:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
+    transition: none;
+}
+
+/* Fade-out effect */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+</style>
 
 
 
