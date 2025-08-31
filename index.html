@@ -1,1531 +1,899 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misty's Page</title>
- 
-<body>
-    <video autoplay loop muted class="background-video">
-        <source src="thunder.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <style>
-
-.background-video {
-    position: fixed; /* Make the video fixed */
-    top: 50%; /* Center the video vertically */
-    left: 50%; /* Center the video horizontally */
-    min-width: 100%; /* Ensure the video covers the entire width */
-    min-height: 100%; /* Ensure the video covers the entire height */
-    width: auto; /* Maintain aspect ratio */
-    height: auto; /* Maintain aspect ratio */
-    z-index: -1; /* Place the video behind other content */
-    transform: translate(-50%, -50%); /* Center the video */
-}
-
-h1 {
-    background-image: url('AA.png'); /* Set the background image */
-    background-size: contain; /* Scale the image to fit the element */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    background-position: center; /* Center the image */
-    width: 360px; /* Set a width for the h1 element (adjust as needed) */
-    height: 115px; /* Set a height for the h1 element (adjust as needed) */
-    margin: -20px 0; /* Space above and below the title */
-    position: fixed; 
-    top: 40px; /* Distance from the top of the viewport */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust to center the title */
-    z-index: 10; /* Ensure it stays above other content */
-    text-align: center; /* Center the text inside the h1 */
-}
-
-
-        .content {
-            text-align: left; /* Align content to the left */
-            position: absolute; /* Position the content absolutely */
-            left: 20px; /* Distance from the left side of the viewport */
-            top: 100px; /* Distance from the top of the viewport */
-        }
-        .song {
-            margin-bottom: 20px; /* Space between songs */
-        }
-       
-button {
-    background-color: white; /* Default button color */
-    color: black; /* Text color */
-    border: 3px outset black; /* Border */
-    padding: 2px 3px; /* Padding for the button */
-    margin-right: 5px; /* Space between buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth transition for background color */
-    border-radius: 5px;
-}
-
-
-
-button:active, /* Change color when button is clicked */
-button.active {
-    background-color: pink; /* Change background color to pink when active */
-    color: black; /* Keep text color black when active */
-}
-
-
-
-/* Animated text styles */
-.animated-text {
-    position: fixed; 
-    top: 10px; /* Distance from the top of the viewport */
-    left: 10px; /* Distance from the left side of the viewport */
-    background-color: black; /* Black background */
-    padding: 10px; /* Padding around the text */
-    border-radius: 5px; /* Rounded corners */
-    color: #ffffff; /* Neon white color */
-    font-size: 24px; /* Font size */
-    font-family: calibri;
-    animation: neon 1.5s ease-in-out infinite alternate; /* Animation */
-}
-
-@keyframes neon {
-    0% {
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 50px #ffffff;
-    }
-    100% {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff, 0 0 70px #ffffff, 0 0 80px #ffffff;
-    }
-}
-        
-.small-button {
-    padding: 5px 9px; /* Adjust padding to make buttons smaller */
-    font-size: 12px; /* Adjust font size */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Optional: add rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-}
-
-
-/* Style for the new container to stack controls vertically and position them properly */
-.controls-container {
-    position: fixed;
-    top: 470px; /* Adjust based on your layout; ensure it's below the jump-to-song dropdown */
-    left: 50px; /* Adjust as needed */
-    display: flex;
-    flex-direction: column; /* Stack vertically */
-    gap: 10px; /* Space between elements */
-    z-index: 5; /* Keep below other overlays if needed */
-    background-color: transparent; /* Optional: background for clarity */
-}
-
-
-</style>
-
-
-
-<h1>
-</h1>
-
-
-
-
- <div class="animated-text">" You are loved, <br> hugs & kisses"
- </div> 
-
-<div class="container">
-    <img src="omega.png" alt="Logo" class="logo">
-    <h3>🎶 M Playlist</h3>
-    <div class="current-song">
-        <h2 id="song-title">One Last Song - A1</h2>
-    </div>
-    <div class="controls">
-        <button id="play-btn">▶️</button>
-        <button id="pause-btn">⏸️</button>
-        <button id="stop-btn">⏹️</button>
-
-
-      
-    </div>
-    <div class="navigation">
-        <button id="prev-btn" class="small-button">⏮️ Previous</button>
-        <button id="next-btn" class="small-button">Next ⏭️</button>
-        <button id="autoplay-btn" class="small-button" style="margin-top: 10px;">🔁 Go Autoplay</button> <!-- New Autoplay Button -->
-    </div>
-</div>
-
-   <div class="jump-to-song">
-        <label for="song-select">Jump to Song:</label>
-        <select id="song-select">
-            <option value="0">1. She's Everything</option>
-            <option value="1">2. Stop & Stare</option>
-            <option value="2">3. Sweet Disposition</option>
-            <option value="3">4. Closing Time</option>
-            <option value="4">5. Kiss From A Rose</option>
-            <option value="5">6. Time of Your Life</option>
-            <option value="6">7. Airplanes</option>
-            <option value="7">8. Stay</option>
-            <option value="8">9. Russian Roulette</option>
-            <option value="9">10. Home</option>
-            <option value="10">11. The night we met</option>
-            <option value="11">12. Older</option>
-            <option value="12">13. Untitled</option>
-            <option value="13">14. Breathe me</option>
-            <option value="14">15. Hurt</option>
-            <option value="15">16. They'll Never Know</option>
-            <option value="16">17. Rainbow</option>
-            <option value="17">18. Bad To The Bone</option>
-            <option value="18">19. Ride of the Valkyries</option>
-            <option value="19">20. It's A Long Way To The Top</option>
-            <option value="20">21. Gypsy</option>
-            <option value="21">22. Drive</option>
-            <option value="22">23. Insensitive</option>
-            <option value="23">24. Turn around look at me</option>
-            <option value="24">25. I'm like a bird</option>
-            <option value="25">26. Barracuda</option>
-            <option value="26">27. OUTRO</option>
-            <option value="27">28. Flightless bird american mouth</option>
-            <option value="28">29. BIRDS OF A FEATHER</option>
-            <option value="29">30. SHE</option>
-           <option value="30"> 31. The Forgotten</option>
-            <option value="31">32. The Vienna</option>
-            <option value="32">33. River</option>
-            <option value="33">34. Lover, You Should've Come Over</option>
-            <option value="34">35. You Didn't Have to Be so Nice</option>
-            <option value="35">36. The Captain of Her Heart</option>
-            <option value="36">37. Life Is A Rock</option>
-            <option value="37">38. The only time to live is now</option>
-            <option value="38">39. Soldier's eyes</option>
-            <option value="39">40. Fragile</option>
-            <option value="40">41. Misty</option>
-            <option value="41">42. Halo</option>
-            <option value="42">43. Beth</option>
-            <option value="43">44. Total Eclipse of The Heart</option>
-            <option value="44">45. Songbird</option>
-            <option value="45">46. Reality</option>
-            <option value="46">47. Eyes Without A Face </option>
-            <option value="47">48. Love Don't Cost A Thing </option>
-            <option value="48">49. If You Had My Love </option>
-            <option value="49">50. One Night In Bangkok </option>
-            <option value="50">51. Nobody </option>
-            <option value="51">52. Promise me </option>
-            <option value="52">53. Black </option>
-            <option value="53">54. Cold Little Heart</option>
-            <option value="54">55. Long long time </option>
-            <option value="55">56. Stop Crying Your Heart Out </option>
-            <option value="56">57. Count on me </option>
-            <option value="57">58. Godbless the USA </option>
-            <option value="58">59. I'm in love with you </option>
-            <option value="59">60. Horse with no name </option>
-            <option value="60">61. Misty (short cover) </option>
-            <option value="61">62. Middle </option>
-            <option value="62">63. First Time Ever I Saw Your Face </option>
-            <option value="63">64. When You Say Nothing At All </option>
-            <option value="64">65. Thunderstruck </option>
-            <option value="65">66. GYPSY- ELLE </option>
-            <option value="66">67. BENEATH THE STEEL </option>
-            <option value="67">68. Mistypedia (Wacha Gonna Do to Me?) </option>
-            <option value="68">69. M </option>
-            <option value="69">70. WALLS </option>
-            <option value="70">71. I'M STILL HERE </option>
-            <option value="71">72. HEROES NEVER DIE </option>
-            <option value="72">73. รักเธอในแบบที่เธอเป็น </option>
-            <option value="73">74. ONE MISTAKE </option>
-            <option value="74">75. DEMONS LIKE MINE </option>
-            <option value="75">76. FORGIVE YOURSELF FIRST </option>
-
-
-            
-        </select>
-    </div>
-
-<!-- Container for filter, volume, and slider -->
-<div class="controls-container">
-  <!-- Filter options -->
-  <div class="filter-options">
-    <label><input type="radio" name="song-filter" value="all" checked> Show All</label>
-    <label><input type="radio" name="song-filter" value="E"> E songs</label>
-    <label><input type="radio" name="song-filter" value="M"> M/L songs</label>
-      <label><input type="radio" name="song-filter" value="NEW"> New Release</label>
-  </div>
-  
-  <!-- Volume control -->
- <div class="volume-control" style="display: flex; align-items: flex-start;">
-<img src="volume.png" alt="Volume" title="Volume" style="cursor: pointer; width: 25px; height: auto; margin-top: 10px;">
-   <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" style="width: 100px; margin-left: 5px; margin-top: 22px;">
-</div>
-  
-  <!-- Song seek slider -->
-<div class="song-slider-control" style="display: flex; align-items: center; margin-top: 10px;">
- <img src="notes.png" alt="Seek" title="Seek" style="width: 30px; height: auto; margin-right: 5px; cursor: pointer; margin-top: -15px; margin-left: -5px;">
-  <input type="range" id="song-slider" value="0" min="0" max="100" step="1" style="width: 100px; margin-left: -3px; margin-top: -15px;">
-</div>
-</div>
-
-
-
-
-
-    <audio id="audio" src="Brad Paisley - She's Everything (Lyrics).mp3"></audio>
-
-
-
-<style>
-   #song-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 200px;
-    height: 4px; /* base height, can adjust */
-  }
-
-  /* WebKit browsers (Chrome, Safari, Edge) */
-  #song-slider::-webkit-slider-runnable-track {
-    background: #4CAF50; /* Track color */
-    height: 4px; /* Track height */
-    border-radius: 2px;
-  }
-  #song-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 12px; /* Thumb size */
-    width: 12px;
-    background: #ff0000; /* Thumb color */
-    border-radius: 50%;
-    cursor: pointer;
-    margin-top: -4px; /* Align thumb vertically with track */
-  }
-
-  /* Firefox */
-  #song-slider::-moz-range-track {
-    background: #4CAF50; /* Track color */
-    height: 4px;
-    border-radius: 2px;
-  }
-  #song-slider::-moz-range-thumb {
-    height: 12px;
-    width: 12px;
-    background: #ff0000; /* Thumb color */
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  /* IE / Edge legacy */
-  #song-slider::-ms-track {
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-    height: 4px;
-  }
-  #song-slider::-ms-thumb {
-    height: 12px;
-    width: 12px;
-    background: #ff0000; /* Thumb color */
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-
- /* WebKit browsers (Chrome, Safari, Edge) */
-#volume-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 200px; /* your slider width */
-  height: 4px; /* fallback height */
-}
-#volume-slider::-webkit-slider-runnable-track {
-  height: 4px; /* thinner track */
-  background: #4CAF50; /* your track color */
-  border-radius: 2px;
-}
-#volume-slider::-webkit-slider-thumb {
-  height: 12px; /* smaller thumb */
-  width: 12px;
-  margin-top: -4px; /* centers thumb vertically over the track */
-  background: #333; /* thumb color */
-  border-radius: 50%;
-  cursor: pointer;
-  -webkit-appearance: none; /* remove default */
-  appearance: none;
-}
-
-/* Firefox */
-#volume-slider::-moz-range-track {
-  height: 4px; /* thinner track */
-  background: #4CAF50; /* your track color */
-  border-radius: 2px;
-}
-#volume-slider::-moz-range-thumb {
-  height: 12px;
-  width: 12px;
-  background: #333; /* thumb color */
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* IE / Edge legacy */
-#volume-slider::-ms-track {
-  height: 4px;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-#volume-slider::-ms-thumb {
-  height: 12px;
-  width: 12px;
-  background: #333; /* thumb color */
-  border-radius: 50%;
-  cursor: pointer;
-}
-</style>
-
-
-
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            background-color: white;
-            color: white;
-            margin: 0;
-            padding: 10px;
-        }
-
-  
-
-.container {
-    text-align: left; /* Align text to the left */
-    background-image: url('Untitled.jpg'); /* Set the background image */
-    background-size: cover; /* Cover the entire container */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    padding: 20px; /* Padding inside the container */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
-    position: fixed; /* Position the container absolutely */
-    top: 110px; /* Adjust this value to move it down */
-    left: 20px; /* Distance from the left */
-    border: 3px double black; /* 3px ridge black border */
-    width: 300px; /* Set a fixed width */
-    height: 250px; /* Set a fixed height */
-    overflow: hidden; /* Hide overflow content */
-}
-.logo {
-    display: block; /* Make the image a block element */
-    margin: 0 auto; /* Center the image horizontally */
-    width: 85px; /* Set the width of the logo (adjust as needed) */
-    height: 60px; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Space below the logo */
-}
-
-.current-song h2 {
-    white-space: normal; /* Allow text to wrap */
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Add ellipsis for overflow text */
-    max-height: 3em; /* Limit height to 2 lines (approximately) */
-    line-height: 1.5em; /* Set line height */
-}
-
-        .controls, .navigation {
-            margin: 20px 0;
-        }
-
-   button {
-    background: linear-gradient(45deg, darkblue, black, green, black); /* Fiery red gradient */
-    background-size: 310% 310%; /* Make the gradient larger for animation */
-    animation: gradient-animation 15s ease infinite; /* Animate the gradient */
-        color: white; /* Text color */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 15px; /* Padding for the button */
-    margin: 0 5px; /* Margin around the button */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    font-size: 16px; /* Font size */
-    transition: background 0.3s, transform 0.2s; /* Smooth transition for hover effect */
-}
-
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-button:hover {
-    background: linear-gradient(45deg, darkblue, black); /* Change gradient on hover */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
-}
-
-
-    </style>
-
-<script>
-
-const volumeSlider = document.getElementById('volume-slider');
-const songSlider = document.getElementById('song-slider');
-// Update the slider as the song plays
-audio.addEventListener('timeupdate', () => {
-    if (audio.duration) {
-        const value = (audio.currentTime / audio.duration) * 100; // Calculate percentage
-        songSlider.value = value; // Update slider value
-    }
-});
-// Seek to the selected position when the slider is changed
-songSlider.addEventListener('input', () => {
-    const newTime = (songSlider.value / 100) * audio.duration; // Calculate new time
-    audio.currentTime = newTime; // Update audio current time
-});
-
-
-// Set initial volume
-audio.volume = volumeSlider.value;
-// Update audio volume when slider changes
-volumeSlider.addEventListener('input', () => {
-    audio.volume = volumeSlider.value;
-});
-
-
-</script>
-
-
-
-<script>
-    const songs = [
-        { id: "E", title: "1. She's Everything", artist: "Brad Paisley", src: "Brad Paisley - She's Everything (Lyrics).mp3" },
-        { id: "E", title: "2. Stop & Stare", artist: "OneRepublic", src: "Stop & Stare - OneRepublic (Lyrics).mp3" },
-        { id: "E", title: "3. Sweet Disposition", artist: "The Temper Trap", src: "The Temper Trap - Sweet Disposition (lyrics).mp3" },
-        { id: "E", title: "4. Closing Time", artist: "Semisonic", src: "Closing Time Semisonic Lyrics.mp3" },
-        { id: "E", title: "5. Kiss From A Rose", artist: "Seal", src: "Seal - Kiss From A Rose (Lyrics).mp3" },
-        { id: "E", title: "6. Time of Your Life", artist: "Green Day", src: "Green Day Time of Your Life(Good Riddance) Lyrics.mp3" },
-        { id: "E", title: "7. Airplanes", artist: "B.o.B (ft. Hayley Williams)", src: "Airplanes - B.o.B (feat. Hayley Williams of Paramore) [LyricsVietsub].mp3" },
-        { id: "E", title: "8. Stay", artist: "Rihanna", src: "Rihanna - Stay (Lyrics) I want you to stay.mp3" },
-        { id: "E", title: "9. Russian Roulette", artist: "Rihanna", src: "Rihanna - Russian Roulette(Lyrics).mp3" },
-        { id: "E", title: "10. Home", artist: "Michael Buble", src: "michael bublé - home (lyrics).mp3" },
-        { id: "E", title: "11. The night we met", artist: "Ehllen Quezada", src: "The night we met (Ehllen's Cover).mp3" },
-        { id: "E", title: "12. Older", artist: "Sasha Sloan", src: "Sasha Sloan - Older (Lyrics).mp3" },
-        { id: "E", title: "13. Untitled", artist: "Simple Plan", src: "Simple Plan - Untitled (Lyrics).mp3" },
-        { id: "E", title: "14. Breathe me", artist: "Sia", src: "Breathe me -- sia.mp3" },
-        { id: "E", title: "15. Hurt", artist: "Nine Inch Nails", src: "Nine Inch Nails - Hurt (Lyrics).mp3" },
-        { id: "E", title: "16. They'll Never Know", artist:"RossCopperman", src: "Ross Copperman - They'll Never Know [Lyrics On Screen].mp3" },
-        { id: "E", title: "17. Rainbow", artist: "Kacey Musgraves", src: "Kacey Musgraves - Rainbow (Lyrics).mp3" },
-        { id: "M", title: "18. Bad To The Bone", artist:"George Thorogood", src: "Bad To The Bone.mp3" },
-        { id: "M", title: "19. Ride of the Valkyries", artist:"(Die Walküre)", src: "UBC Symphony Orchestra - Wagner - Ride of the Valkyries from Die Walküre.mp3" },
-        { id: "M", title: "20. It's A Long Way To The Top", artist:"AC/DC", src: "ACDC - It's A Long Way To The Top [Official Music Video], Full HD (Remaster, Resync and Upscale).mp3" },
-        { id: "M", title: "21. Fleetwood Mac", artist:"Gypsy", src: "Fleetwood Mac - Gypsy (Lyrics).mp3" },
-        { id: "M", title: "22. Drive", artist:"The Cars", src: "The Cars - Drive (Lyrics).mp3" },
-        { id: "M", title: "23. Insensitive", artist:"Jann Arden", src: "Jann Arden - Insensitive (Live From Songs & Stories) [mYrzQ5mo4dc].mp3" },
-        { id: "M", title: "24. Turn Around, Look At Me", artist:"Glenn", src: "Turn Around, Look At Me.mp3" },
-        { id: "M", title: "25. I'm Like A Bird", artist:"Nelly Furtado", src: "Nelly Furtado - I'm Like A Bird (Official Music Video).mp3" },
-        { id: "M", title: "26. Barracuda", artist:"Heart", src: "Heart - Barracuda.mp3" },
-        { id: "E", title: "27. OUTRO", artist:"M83", src: "M83 - OUTRO (Lyrics).mp3" },
-        { id: "E", title: "28. Flightless bird", artist:"Iron & Wine", src: "Flightless Bird, American Mouth.mp3" },
-        { id: "M", title: "29. BIRDS OF A FEATHER", artist:"Billie Eilish", src: "Billie Eilish - BIRDS OF A FEATHER.mp3" },
-        { id: "E", title: "30. SHE", artist:"Elvis Costello", src: "She.mp3" },
-        { id: "E", title: "31. The Forgotten", artist:"Green Day ", src: "Green Day - The Forgotten - Lyrics.mp3" },
-        { id: "E", title: "32. Vienna", artist:"Billy Joel", src: "Billy Joel - Vienna (Audio) (Official Audio).mp3" },
-        { id: "E", title: "33. River", artist:"Alex Lambert", src: "Alex Lambert - River (Leon Bridges Cover).mp3" },
-        { id: "E", title: "34. Lover, You Should've Come Over", artist:"Jeff Buckley", src: "Jeff Buckley - Lover, You Should've Come Over (Audio).mp3" },
-        { id: "M", title: "35. You Didn't Have to Be so Nice", artist:"The Lovin' Spoonful", src: "The Lovin' Spoonful - You Didn't Have to Be so Nice (Audio).mp3" },
-        { id: "M", title: "36. The Captain of Her Heart", artist:"Double", src: "The Captain of Her Heart (Radio Version).mp3" },
-        { id: "M", title: "37. Life Is A Rock", artist:"Reunion", src: "Life Is A Rock (But The Radio Rolled Me) BEST LYRICS- Reunion 1974.mp3" },
-        { id: "E", title: "38. The Only Time To Live Is Now", artist:"Cyptor", src: "Cyptor - The Only Time To Live Is Now.mp3" },
-        { id: "E", title: "39. Soldier's Eyes", artist:"Soldier's Eyes", src: "Soldier's Eyes.mp3" }, // Artist might be the same as title, confirm
-        { id: "E", title: "40. Fragile", artist:"Laufey", src: "Laufey - Fragile (Acoustic) (mp3cut.net).mp3" },
-        { id: "E", title: "41. Misty", artist:"Chase Eagleson", src: "Misty - Ella Fitzgerald (Acoustic Cover by Chase Eagleson).mp3" },
-        { id: "M", title: "42. Halo", artist:"Beyoncé", src: "Halo - Beyoncé (Lyrics).mp3" },
-        { id: "M", title: "43. Beth", artist:"Kiss", src: "Beth Lyrics Kiss.mp3" },
-        { id: "M", title: "44. Total Eclipse of the Heart", artist:"Bonnie Tyler", src: "Bonnie Tyler - Total Eclipse of the Heart (Lyrics).mp3" },
-        { id: "M", title: "45. Songbird", artist:"Barbra Streisand", src: "Songbird (lyrics) - Barbra Streisand.mp3" },
-        { id: "E", title: "46. Reality", artist:"Richard Sanderson", src: "Richard Sanderson - Reality (original, with lyrics).mp3" },
-        { id: "M", title: "47. Eyes Without A Face", artist:"Billy Idol", src: "Eyes Without A Face (Remastered 1999).mp3" },
-        { id: "M", title: "48. Love Don't Cost A Thing", artist:"Jennifer Lopez", src: "Love Don't Cost A Thing - Jennifer Lopez (Lyrics).mp3" },
-        { id: "M", title: "49. If You Had My Love", artist:"Jennifer Lopez", src: "If You Had My Love.mp3" },
-        { id: "M", title: "50. One Night In Bangkok", artist:"Murray Head", src: "Murray Head - One Night In Bangkok From CHESS.mp3" },
-        { id: "M", title: "51. Nobody", artist:"Sylvia", src: "Sylvia Nobody Lyrics.mp3" },
-        { id: "E", title: "52. Promise me", artist:"Beverly Craven", src: "Beverley Craven - Promise Me.mp3" },
-        { id: "E", title: "53. Black", artist:"Norah Jones", src: "Black (feat. Norah Jones).mp3" },
-        { id: "E", title: "54. Cold Little Heart", artist:"Michael Kiwanuka", src: "Michael Kiwanuka - Cold Little Heart (lyrics).mp3" },
-        { id: "E", title: "55. Long long time", artist:"Linda Ronstadt", src: "Long Long Time (Remastered).mp3" },
-        { id: "E", title: "56. Stop Crying Your Heart Out", artist:"Oasis", src: "Oasis - Stop Crying Your Heart Out (Lyrics).mp3" },
-        { id: "E", title: "57. Count on Me", artist:"Bruno Mars", src: "Bruno Mars - Count on Me (Official Lyric Video).mp3" },
-        { id: "M", title: "58. God Bless the USA", artist:"Lee Greenwood", src: "God Bless the USA-Lee Greenwood (Lyrics).mp3" },
-        { id: "E", title: "59. In love with u", artist:"The 1975", src: "The 1975 - I'm In Love With You (Lyrics).mp3" },
-        { id: "E", title: "60. A Horse With No Name", artist:"America", src: "America - A Horse With No Name (Lyrics).mp3" },
-        { id: "E", title: "61. Misty", artist:"E", src: "Misty (short cover).mp3" },
-        { id: "M", title: "62. Middle", artist:"DJ Snake", src: "DJ Snake - Middle (Lyrics) ft. Bipolar Sunshine.mp3" },
-        { id: "M", title: "63. First Time Ever I Saw Your Face", artist:"", src: "Céline Dion - The First Time Ever I Saw Your Face (Official Audio).mp3" },
-        { id: "M", title: "64. When You Say Nothing At All", artist:"", src: "Ronan Keating - When You Say Nothing At All [HQ].mp3" },
-        { id: "M", title: "65. Thunderstruck", artist:"ACDC", src: "ACDC - Thunderstruck.mp3" },
-        { id: "E", title: "66. GYPSY", artist:"ELLE", src: "Gypsy-Elle.wav" },
-        { id: "NEW", title: "67. BENEATH THE STEEL", artist:"ELLE", src: "BENEATH THE STEEL.mp3" },
-        { id: "NEW", title: "68. MISTYPEDIA", artist:"ELLE", src: "Mistypedia ( Wacha gonna do to me) (mp3cut.net).mp3" },
-        { id: "NEW", title: "69. M", artist:"ELLE", src: "M(POEM).mp3" },
-        { id: "NEW", title: "70. WALLS", artist:"ELLE", src: "WALLS-  Official Audio.mp3" },
-        { id: "NEW", title: "71. I'M STILL HERE", artist:"ELLE", src: "I'M STILL HERE-  Official Audio.mp3" },
-        { id: "NEW", title: "72. HEROES NEVER DIE", artist:"ELLE", src: "Heroes never die.mp3" },
-        { id: "NEW", title: "73. รักเธอในแบบที่เธอเป็น", artist:"ELLE", src: "รักเธอในแบบที่เธอเป็น.mp3" },
-        { id: "NEW", title: "74. ONE MISTAKE", artist:"ELLE", src: "ONE MISTAKE-  Official audio.mp3" },
-        { id: "NEW", title: "75. DEMONS LIKE MINE", artist:"ELLE", src: "DEMONS LIKE MINE.mp3" },
-        { id: "NEW", title: "76. FORGIVE YOURSELF FIRST", artist:"ELLE", src: "FORGIVE YOURSELF FIRST.mp3" },
-    ];
-
-    let currentSongIndex = 0;
-    let isAutoplayEnabled = false;
-    let filteredSongs = []; // Array to hold the currently filtered songs
-
-    const audio = document.getElementById('audio');
-    const songTitle = document.getElementById('song-title');
-    const songSelect = document.getElementById('song-select');
-    const filterRadios = document.querySelectorAll('input[name="song-filter"]');
-
-    // Function to populate the dropdown based on the filtered songs
-    function populateSongSelect(songsToDisplay) {
-        songSelect.innerHTML = ''; // Clear existing options
-        songsToDisplay.forEach((song, index) => {
-            const option = document.createElement('option');
-            option.value = index; // Use the index in the *filtered* array
-            option.textContent = `${song.title}`; // Display the song title
-            songSelect.appendChild(option);
-        });
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dear Misty</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
     }
 
-    // Function to filter songs based on the selected radio button
-    function filterSongs(filterValue) {
-        if (filterValue === 'all') {
-            filteredSongs = songs;
-        } else {
-            filteredSongs = songs.filter(song => song.id === filterValue);
-        }
-        populateSongSelect(filteredSongs);
-        // After filtering, if the current song is no longer in the filtered list,
-        // reset to the first song in the filtered list.
-        const currentSongInFiltered = filteredSongs.find(song => song.src === audio.src);
-        if (!currentSongInFiltered && filteredSongs.length > 0) {
-             currentSongIndex = 0; // Reset index to the first song in the filtered list
-             updateSong(); // Update the displayed song and audio source
-        } else if (currentSongInFiltered) {
-            // Update the currentSongIndex to match the index in the filtered list
-            currentSongIndex = filteredSongs.indexOf(currentSongInFiltered);
-        } else {
-             // If no songs match the filter, clear the current song
-             currentSongIndex = -1; // Indicate no song is selected
-             songTitle.textContent = "No songs match filter";
-             audio.src = ""; // Clear audio source
-        }
+    /* Background video styling */
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
     }
 
-    function updateSong() {
-        if (currentSongIndex >= 0 && currentSongIndex < filteredSongs.length) {
-            const currentSong = filteredSongs[currentSongIndex];
-            audio.src = currentSong.src;
-            songTitle.textContent = `${currentSong.title} - ${currentSong.artist}`;
-            audio.load(); // Load the new song
-            // Update the dropdown to show the currently playing song
-            songSelect.value = currentSongIndex;
-        } else {
-            songTitle.textContent = "No song selected";
-            audio.src = "";
-        }
+    /* Ensure all content is above the video */
+    .content {
+      position: relative;
+      z-index: 1;
     }
-
-    // Play button
-    document.getElementById('play-btn').addEventListener('click', () => {
-        if (audio.src) { // Only play if there's a source
-            audio.play();
-        }
-    });
-
-    // Pause button
-    document.getElementById('pause-btn').addEventListener('click', () => {
-        audio.pause();
-    });
-
-    // Stop button
-    document.getElementById('stop-btn').addEventListener('click', () => {
-        audio.pause();
-        audio.currentTime = 0;
-    });
-
-    // Next button
-    document.getElementById('next-btn').addEventListener('click', () => {
-        if (filteredSongs.length > 0) {
-            currentSongIndex = (currentSongIndex + 1) % filteredSongs.length;
-            updateSong();
-            audio.play();
-        }
-    });
-
-    // Previous button
-    document.getElementById('prev-btn').addEventListener('click', () => {
-        if (filteredSongs.length > 0) {
-            currentSongIndex = (currentSongIndex - 1 + filteredSongs.length) % filteredSongs.length;
-            updateSong();
-            audio.play();
-        }
-    });
-
-    // Autoplay button
-    document.getElementById('autoplay-btn').addEventListener('click', () => {
-        isAutoplayEnabled = !isAutoplayEnabled;
-        document.getElementById('autoplay-btn').textContent = isAutoplayEnabled ? '🔁 Autoplay On' : '🔁 Autoplay Off';
-    });
-
-    // Event listener for when the song ends
-    audio.addEventListener('ended', () => {
-        if (isAutoplayEnabled && filteredSongs.length > 0) {
-            currentSongIndex = (currentSongIndex + 1) % filteredSongs.length;
-            updateSong();
-            audio.play();
-        }
-    });
-
-    // Event listener for the song select dropdown
-    songSelect.addEventListener('change', function() {
-        currentSongIndex = parseInt(this.value); // Get the index from the filtered list
-        updateSong(); // Update the song display and audio source
-        audio.play(); // Automatically play the selected song
-    });
-
-    // Add event listeners to the filter radio buttons
-    filterRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
-            filterSongs(this.value);
-            // After filtering, update the displayed song to the first in the new list
-            if (filteredSongs.length > 0) {
-                 currentSongIndex = 0;
-                 updateSong();
-            } else {
-                 currentSongIndex = -1; // No songs in the filtered list
-                 updateSong(); // Clear the display
-            }
-        });
-    });
-
-    // Initialize the filtered songs and populate the dropdown on page load
-    filterSongs('all');
-    // Initialize the first song from the initially filtered list
-    if (filteredSongs.length > 0) {
-        updateSong();
-    }
-
-</script>
-
-
-
-
-<style>
-
-
-.filter-options {
-    /* You might need to experiment with position: relative; or absolute; */
-    position: fixed; /* Or absolute */
-    top: 450px; /* Adjust this value to be below the fixed jump-to-song */
-    left: 50px; /* Align horizontally with jump-to-song if needed */
-    color: white;
-    z-index: 5; /* Ensure it's below jump-to-song if needed */
-}
-
-.filter-options label {
-    margin-right: 15px;
-    font-size: 10px;
-}
-
-.jump-to-song select {
-    width: 240px; 
-}
-.jump-to-song {
-    top: 420px; /* Increase space above the dropdown to move it down */
-    left: 50px; /* Move it to the right corner (adjust this value to move it right) */
-    text-align: left; /* Align the dropdown to the left */
-    z-index: 10; /* Ensure it appears above other elements */
-    position: fixed;
-}
-
-.jump-to-song label {
-    margin-right: 5px; /* Space between label and dropdown */
-    margin-top: 200px; /* Add margin to move the label down */
-    color: white; /* Change label color to white for visibility */
-}
-
-</style>
-<script>
-document.getElementById('song-select').addEventListener('change', function() {
-    currentSongIndex = parseInt(this.value); // Get the selected song index
-    updateSong(); // Update the song display
-    audio.play(); // Automatically play the selected song
-});
-
-</script>
-
-
-
-
-
-
-
-
-
-<style>
-
-.love-letter-message {
-    font-size: 24px; /* Font size for the message */
-    font-style: italic;
-    color: black; /* Text color */
-    margin-bottom: 0; /* Remove space between the message and the emoji */
-    position: fixed; /* Position the message absolutely */
-    top: 30px; /* Distance from the top of the viewport */
-    right: 50px; /* Distance from the right side of the viewport */
-}
-
- 
-.love-letter {
-    position: fixed; /* Position the emoji absolutely */
-    top: 20px; /* Distance from the top of the viewport */
-    right: 20px; /* Distance from the right side of the viewport */
-    font-size: 100px; /* Adjust size */
-    text-align: center; /* Center the text */
-}
-
-.envelope {
-    position: relative;
-    width: 100px; /* Width of the envelope */
-    height: 60px; /* Height of the envelope */
-    background-color: red; /* Envelope color */
-    border: 2px solid black; /* Envelope border color */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-}
-
-.flap {
-    position: absolute;
-    top: -20px; /* Position the flap above the envelope */
-    left: 0;
-    width: 100%;
-    height: 20px; /* Height of the flap */
-    background-color: red; /* Flap color */
-    border-top-left-radius: 5px; /* Rounded corners */
-    border-top-right-radius: 5px; /* Rounded corners */
-}
-
-.body {
-    position: absolute;
-    top: 10px; /* Position the body below the flap */
-    left: 5px; /* Indent the body */
-    width: 90%; /* Width of the body */
-    height: 40px; /* Height of the body */
-    background-color: black; /* Body color */
-}
-
-.heart {
-    position: absolute;
-    bottom: 5px; /* Position the heart inside the envelope */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust to center */
-    font-size: 60px; /* Size of the heart */
-    color: #ff007f; /* Heart color */
-}
-
-.click-to-open {
-    position: absolute; /* Position the text absolutely */
-    bottom: -30px; /* Distance from the bottom of the envelope */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust to center the text */
-    font-size: 16px; /* Font size for the text */
-    color: white; /* Text color */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Optional: add shadow for better visibility */
-    white-space: nowrap;
-    font-style: italic;
-}
-
-    </style>
-</head>
-<body>
 
  
 
-
-      <style>
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .modal-content {
-            background-color: white;
-            color: black;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 15px;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-            max-width: 600px; /* Maximum width */
-        }
-
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-.love-letter img {
-    cursor: pointer; /* Change to pointer */
-    width: 70px; /* Set a width for the image */
-    height: 60px; /* Maintain aspect ratio */
-    margin-bottom: 12px; /* Adjust this value to move the image up */
-    position: relative; /* Set position to relative */
-    left: 15px; /* Move the image to the right */
-}
-
-
-
-    </style>
-</head>
-<body>
-
-
-
-
-
-
-
-
-<div class="love-letter">
-    <img src="bone.png" alt="Love Letter" />
-</div>
-
-<div id="greetingModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button" onclick="closeModal()">&times;</span>
-
-
-<br>
-
-        
-        
-<h5>06/01/2025</h5>
-        <p>
-            Hello Dear Misty, <br><br>
-            Muah, I hope you like the new updates here.
-            <br><br>
-            Love,<br>
-            Ehllen
-        </p>
-
-
-
-
-        
-
-
-    </div>
-</div>
-
-<script>
-    // Function to open the modal
-    function openModal() {
-        document.getElementById("greetingModal").style.display = "block";
+ /* Controls */
+    .controls {
+      margin: 20px;
+      transform: translateY(-13px);
     }
-
-    // Function to close the modal
-    function closeModal() {
-        document.getElementById("greetingModal").style.display = "none";
-    }
-
-    // Add event listener to the love letter image
-    document.querySelector('.love-letter img').addEventListener('click', openModal);
-</script>
+   
+  
 
 
-
-<style>
-        .textbox {
-            position: fixed; /* Fixed position */
-            bottom: 20px; /* Distance from the bottom of the page */
-            right: 20px; /* Distance from the right of the page */
-            width: 300px; /* Fixed width for the textbox */
-            height: 120px; /* Fixed height for the textbox */
-           
-            border-radius: 10px; /* Rounded corners */
-            padding: 20px; /* Padding inside the textbox */
-            background-color: none; /* Background color of the textbox */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-            text-align: center; /* Center text inside the textbox */
-            z-index: 1000; /* Ensure it appears above other elements */
-           
-        }
-        .poem {
-            font-size: 25px;
-            color: beige;
-            margin: 20px 0;
-            transition: opacity 0.5s ease;
-            font-family: calibri;
-        }
-        #author {
-            margin-top: 30px;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="textbox">
-    <div class="poem" id="poem"></div>
-    <div id="author"></div>
-</div>
-
-<script>
-    const poems = [
-        "People may think they know your soul,",
-        "Yet I wonder if they truly see the whole.",
-        "Perhaps just fragments of you, scattered and few,",
-        "With layers upon layers—waiting to break through.",
-        "I ponder what truly stirs your heart's desire—",
-        "Do you like the ice or the fire?",
-        "Will there be a cost to see your naked smile?",
-        "I wonder why it feels so worth the while.",
-        "I know when shadows loom and you feel alone,",
-        "I know your quiet scream— it hits me to the bone.",
-        "I know what demons can do,",
-        "But now you won't face the darkness alone—",
-        "I'll wrap my arms around you,",
-        "You'll find a way back home.",
-        "But just like rivers to the sea,",
-        "I know it takes time to see me.",
-        "You are a warrior, clad in armor bright,",
-        "Yet beneath the steel— your soul craves the light. ",
-        "BENEATH THE STEEL",
-         "A poem written by: Ehllen Quezada"
-
-
-    ];
-
-    let currentIndex = 0;
-
-    function showPoem() {
-        const poemElement = document.getElementById('poem');
-        poemElement.innerHTML = poems[currentIndex];
-
-      
-    }
-
-    function nextPoem() {
-        currentIndex = (currentIndex + 1) % poems.length;
-        showPoem();
-    }
-
-    // Show the first poem on page load
-    showPoem();
-
-    // Change the poem every 5 seconds (5000 milliseconds)
-    setInterval(nextPoem, 5000);
-</script>
-
-
-
-<div class="icon-container">
-    <img src="quiz.png" alt="Start Quiz" class="quiz" onclick="showIntroPage()" />
-    <img src="cam.png" alt="Photo Icon" class="gallery" onclick="showMessage()">
-    <img src="poem.png" alt="Poetry Icon" class="poetry" onclick="openPoemTable()">
-</div>
-
-<style>
-  .icon-container {
-            display: flex;
-            justify-content: center; /* Center the icons horizontally */
-            align-items: center; /* Center the icons vertically */
-            position: fixed; /* Fix the position to the bottom */
-            bottom: 10px; /* Distance from the bottom of the page */
-            left: 50%; /* Center the container horizontally */
-            transform: translateX(-50%); /* Adjust to center the container */
-            gap: 10px; /* Space between icons */
-            z-index: 10; /* Ensure it appears above other elements */
-        }
-
-        .quiz {
-    width: 60px; /* Set the width of the icons */
-    height: 50px; /* Set the height of the icons */
-    margin-top: 10px; 
-}
-
-
-.quiz:hover {
-    transform: scale(1.3); /* Slightly enlarge the image on hover */
-}
-        .gallery {
-            width: 60px; /* Set the width of the icons */
-            height: 60px; /* Set the height of the icons */
-            margin-top: 15px;
-        }
-
-.gallery:hover {
-    transform: scale(1.3); /* Slightly enlarge the image on hover */
-}
-
-.poetry {
-    width: 60px;
-    height: auto; /* maintain aspect ratio if needed */
-    max-height: 40px; /* optional: limit height */
-    margin-top: 8px;
-
-  }
-
-.poetry:hover {
-    transform: scale(1.3);
-    transition: transform 0.2s ease;
-}
-
-
-</style>
-
-
-
-<script>
-    function showMessage() {
-        alert("SORRY! BUT PHOTOS ARE NOT AVAILABLE YET.");
-    }
-</script>
-
-
-<!-- Intro Page -->
-<div id="introPage" style="
+ .controls button  {
+  background-image: linear-gradient(#f7f8fa ,#e7e9ec);
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  box-shadow: rgba(255,255,255,.6) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Amazon Ember",Arial,sans-serif;
+  font-size: 14px;
+  height: 29px;
+  font-size: 13px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 11px;
   text-align: center;
-  padding: 40px;
-  background-color: #73c0db;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+ .controls button:active {
+  border-bottom-color: #a2a6ac;
+}
+
+ .controls button:active:hover {
+  border-bottom-color: #a2a6ac;
+}
+
+ .controls button:hover {
+  border-color: #a2a6ac #979aa1 #82858a;
+}
+
+ .controls button:focus {
+  border-color: #e77600;
+  box-shadow: rgba(228, 121, 17, .5) 0 0 3px 2px;
+  outline: 0;
+}
+
+
+
+
+
+    /* Song Info */
+    .song-image {
+      width: 310px;
+      height: 265px;
+      object-fit: cover;
+      border-radius: 2px;
+ transform: translateY(-10px);
+border: 3px solid red; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 105, 180, 0.6); 
+    }
+   #song-title {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: beige;
+  transform: translateY(-10px); /* Slight upward shift */
+ text-shadow: 
+    1px 1px 0 black,  
+   -1px -1px 0 black,  
+    1px -1px 0 black,  
+   -1px 1px 0 black; /* 1px black stroke */
+}
+
+
+
+
+/* Dropdown container and select */
+.dropdown {
+  position: fixed;      /* Fixed to stay visible */
+  left: 10px;
+  top: 100px;
+ background-color: rgb(26, 26, 46); 
+  padding: 5px;
+  border-radius: 3px;
   color: black;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  display: none;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  width: 80%;
-  max-width: 420px;
-  position: fixed;
-">
- <!-- Close Button -->
-<span onclick="document.getElementById('introPage').style.display = 'none'" style="
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #888;
-">&times;</span>
-
-
-  <h2>QUIZ: HOW WELL DO YOU KNOW ME?</h2>
-  <h2>Level 1</h2>
-  <div style="margin: 20px 0;">
-    <label for="introName">Enter your name: </label>
-    <input type="text" id="introName" placeholder="enter name & click start" />
-  </div>
-  <div 
-    style="display:inline-block; padding:15px 10px; background-color:#a45438; color:#fff; border-radius:8px; cursor:pointer; font-size:12px;"
-    onclick="startQuiz()">
-    START THE QUIZ
-  </div>
-</div>
-
-
-<!-- Quiz Modal -->
-<div id="quizModal" class="modal" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1000;">
-  <div class="modal-content" style="margin: 50px auto; background: #73c0db; padding: 20px; border-radius: 10px; width: 600px; max-height: 80%; overflow-y: auto;">
-    <span class="close-button" onclick="closeQuiz()" style="float: right; cursor:pointer; font-size:24px;">×</span>
-    <h2 style="text-align: center;">HOW WELL DO YOU KNOW ME?</h2>
-    <h2 style="text-align: center;">Level 1</h2>
-    
-    <div id="quizQuestions" style="margin-top: 20px;"></div>
-    
-    <div onclick="submitQuiz()" style="margin-top: 20px; display: block; margin-left: auto; margin-right: auto; background-color: #a45438; color: white; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; text-align: center; width: fit-content;">Submit</div>
-  </div>
-</div>
-
-<!-- Result display -->
-
-<div id="quizResult" style="
-  display: none;
-  position: fixed;
-  bottom: 220px; /* moved up a bit */
-  left: 50%;
-  transform: translateX(-50%);
-  background: #80d6d4;
-  color: white;
-  padding: 25px 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  z-index: 100;
-  width: 340px;
-  text-align: center;
-  font-size: 18px;
-  font-family: 'Segoe UI', sans-serif; color: black;
-">
-  <h3 style="font-size: 22px; margin-bottom: 10px;">🎉 Test Results</h3>
-  <p id="resultText" style="margin-bottom: 20px;"></p>
-
-<!-- Wrap the outside result buttons -->
-<div id="outsideResultButtons" style="display: none; position: fixed; top: 10px; left: 20px; z-index: 100;">
-  <div onclick="closeResult()" style="cursor:pointer; padding:10px; background-color:#ccc; border-radius:5px;">Close</div>
-  <div onclick="resetQuiz()" style="cursor:pointer; padding:10px; background-color:#f44336; color:white; border-radius:5px; margin-top:5px;">Reset</div>
-</div>
-
-
-
-
-  <h3>Test Results</h3>
-  <p id="resultText"></p>
-  <div onclick="closeResult()" style="cursor:pointer; padding:10px; background-color:#ccc; border-radius:5px; display:inline-block;">Close</div>
-  <div onclick="resetQuiz()" style="cursor:pointer; padding:10px; background-color:#f44336; color:white; border-radius:5px; display:inline-block; margin-left: 10px;">Reset</div>
-</div>
-
-<script>
-  const quizQuestions = [
-    { question: "What are my hobbies?", options: ["Drawing, Singing, Writing", "Dancing & Acting", "All of the above", "Just eating lol"], answer: "Drawing, Singing, Writing" },
-    { question: "What is my favorite movie?", options: ["Titanic", "Twilight", "Harry Potter", "Fifty Shades of Grey"], answer: "Twilight" },
-    { question: "What makes me cry?", options: ["Can be anything it depends on my mood", "Only Onion", "Mother's megaphone voice", "Watching Batang Quiapo"], answer: "Can be anything it depends on my mood" },
-    { question: "Who is my favorite poet?", options: ["Edgar Allan Poe", "Stephanie Meyer", "Sha Nazino", "Jose Rizal"], answer: "Edgar Allan Poe" },
-    { question: "Which animal do I love most?", options: ["Dog", "Cat", "Bird", "Fish"], answer: "Dog" },
-    { question: "What's my favorite food?", options: ["Bitter melon", "Beef stew", "Chicken feet", "Fish stew"], answer: "Beef stew" },
-    { question: "What annoys me?", options: ["Repeating myself", "Mother's rant", "Slow internet/device loading", "Lack of sleep"], answer: "Slow internet/device loading" },
-    { question: "What attracts me the most in a person?", options: ["Physical appearance", "Intelligence", "Humility", "Kindness"], answer: "Intelligence" },
-    { question: "I am really good at?", options: ["Dancing in the C.R", "Eating nonstop", "Hiding feelings", "Socializing"], answer: "Hiding feelings" },
-    { question: "When I'm sad this is what I do?", options: ["I go somewhere with friends", "I am quiet & isolate myself", "I sleep often", "I go to church"], answer: "I am quiet & isolate myself" },
-    { question: "Who's my girl crush/idol?", options: ["Kristen Stewart", "Emma Watson", "Leighton Meester", "Megan Fox"], answer: "Kristen Stewart" },
-    { question: "Who's my idol in singing?", options: ["Regine Velasquez", "Charice Pempengco", "Morisette Amon", "Klarisse De guzman"], answer: "Charice Pempengco" },
-    { question: "What makes me happy most?", options: ["Sleeping", "Watching movies/dramas", "Chatting with someone I like/love", "Money"], answer: "Chatting with someone I like/love" },
-    { question: "People dont know that I have?", options: ["Can't sleep w/o rubbing my feet on a smooth fabric", "I have a Phonophobia", "I am bisexual", "All of the above"], answer: "All of the above" }
-  ];
-
-  function showIntroPage() {
-    const storedResult = localStorage.getItem('quizResult');
-    if (storedResult) {
-      // ✅ Use innerHTML instead of innerText to properly render <strong>, <br>, etc.
-      document.getElementById('resultText').innerHTML = storedResult;
-      document.getElementById('quizResult').style.display = 'block';
-    } else {
-      document.getElementById('introPage').style.display = 'block';
-    }
-  }
-
-  function startQuiz() {
-    const nameInput = document.getElementById('introName').value.trim();
-    window.userName = nameInput || 'Anonymous';
-
-    document.getElementById('introPage').style.display = 'none';
-    document.getElementById('quizModal').style.display = 'block';
-    loadQuizQuestions();
-  }
-
-  function closeQuiz() {
-    document.getElementById('quizModal').style.display = 'none';
-  }
-
-  function loadQuizQuestions() {
-    const container = document.getElementById('quizQuestions');
-    container.innerHTML = '';
-
-    quizQuestions.forEach((q, index) => {
-      const qDiv = document.createElement('div');
-      qDiv.style.marginBottom = '15px';
-
-      const qTitle = document.createElement('div');
-      qTitle.innerHTML = `<strong>Q${index + 1}: ${q.question}</strong>`;
-      qDiv.appendChild(qTitle);
-
-      q.options.forEach(opt => {
-        const label = document.createElement('label');
-        label.style.display = 'block';
-        label.style.marginLeft = '20px';
-
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.name = `question${index}`;
-        radio.value = opt;
-
-        label.appendChild(radio);
-        label.appendChild(document.createTextNode(` ${opt}`));
-        qDiv.appendChild(label);
-      });
-
-      container.appendChild(qDiv);
-    });
-  }
-
-  function submitQuiz() {
-    const name = window.userName || 'Anonymous';
-    let score = 0;
-
-    // Check if all questions are answered
-    for (let index = 0; index < quizQuestions.length; index++) {
-      const selected = document.querySelector(`input[name="question${index}"]:checked`);
-      if (!selected) {
-        alert("Sorry, please finish all the test.");
-        return;
-      }
-    }
-
-    // Calculate score
-    quizQuestions.forEach((q, index) => {
-      const selected = document.querySelector(`input[name="question${index}"]:checked`);
-      if (selected && selected.value === q.answer) {
-        score++;
-      }
-    });
-
-    // Result logic
-    const passed = score >= 7;
-    const resultStatus = passed ? " PASSED" : " FAILED";
-    const message = passed
-      ? "I’m genuinely touched — you really know me well."
-      : "That was fun! Want to learn more about me and try again?";
-
-    const resultMsg = `
-      <strong>RESULTS: ${resultStatus}</strong><br>
-      Score: ${score}/${quizQuestions.length}<br><br>
-      <strong>${name}</strong>,<br>${message}
-    `;
-
-    document.getElementById('resultText').innerHTML = resultMsg;
-    document.getElementById('quizResult').style.display = 'block';
-
-    localStorage.setItem('quizResult', resultMsg);
-    closeQuiz();
-  }
-
-  function closeResult() {
-    document.getElementById('quizResult').style.display = 'none';
-  }
-
-  function resetQuiz() {
-  alert("Sorry, this needs admin's approval.");
+  z-index: 10;          /* Above other content */
+  width: 165px;         /* Fixed width for the dropdown */
 }
 
-</script>
+.dropdown select {
+    background-image: linear-gradient(#f7f8fa ,#e7e9ec);
+  color: black;
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;          /* Make select fill the dropdown width */
+  overflow: hidden;     /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: nowrap;  /* Prevent text from wrapping */
+}
+
+
+/* Container for all categories, centers and spaces them */
+.category-images {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+/* Individual category styling */
+.category {
+  position: relative;
+  width: 180px;
+  height: 170px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(-10px);
+}
+
+.category img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.category-label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+  color: white;
+  padding: 8px 0;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  text-shadow: 1px 1px 3px black;
+  pointer-events: none; /* so clicks go to .category */
+}
 
 
 
-<!-- Poem Table -->
-<div id="poemTable" class="poem-table" style="display: none;">
-    <div class="table-content">
-        <span class="close" onclick="closePoemTable()" style="position: absolute; top: 2px; right: 15px; color: #aaa; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
-       <h2 id="poemTitle" style="color: #ca3c25;">THE NIGHT, I REMEMBERED WHO LIORA WAS</h2>
-<h4 style="color: #ca3c25;">Poem written by: Ehllen Quezada</h4>
 
-        <div id="poemText"></div>
-        <div class="navigation">
-            <div class="poem-prev" onclick="changePoem(-1)">Previous</div>
-            <div class="poem-next" onclick="changePoem(1)">Next</div>
-        </div>
-<div id="pageCount" style="margin-top:10px; font-weight:bold; text-align:center;"> </div>
+    /* Bottom Text */
+    .bottom-text {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: black;
+      color: beige;
+      text-align: center;
+      padding: 10px 0;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-style: italic;
+    }
+
+@keyframes quiet {
+  25% { transform: scaleY(.6); }
+  50% { transform: scaleY(.4); }
+  75% { transform: scaleY(.8); }
+}
+
+@keyframes normal {
+  25% { transform: scaleY(1); }
+  50% { transform: scaleY(.4); }
+  75% { transform: scaleY(.6); }
+}
+
+@keyframes loud {
+  25% { transform: scaleY(1); }
+  50% { transform: scaleY(.4); }
+  75% { transform: scaleY(1.2); }
+}
+
+/* Music Wave Animation */
+.boxContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  --boxSize: 8px;
+  --gutter: 4px;
+  width: calc((var(--boxSize) + var(--gutter)) * 5);
+  margin: 20px auto;
+}
+
+.box {
+  transform: scaleY(0.4);
+  height: 100%;
+  width: var(--boxSize);
+  background: #00ffe7;
+  border-radius: 8px;
+}
+
+/* Animation only active when playing */
+.boxContainer.playing .box1 { animation: quiet 1.2s ease-in-out infinite; }
+.boxContainer.playing .box2 { animation: normal 1.2s ease-in-out infinite; }
+.boxContainer.playing .box3 { animation: quiet 1.2s ease-in-out infinite; }
+.boxContainer.playing .box4 { animation: loud 1.2s ease-in-out infinite; }
+.boxContainer.playing .box5 { animation: quiet 1.2s ease-in-out infinite; }
+    /* Header Styles */
+    .header-content {
+      position: relative;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     background: linear-gradient(45deg, black, black, darkblue, black);
+
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+    .inbox-text {
+      position: absolute;
+      right: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      text-decoration: underline;
+    }
+
+    .inbox-text:hover { color: #ccc; }
+
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+
+   <style>
+
+@keyframes mistyBlink {
+  0% {
+    opacity: 1;
+    text-shadow: 0 0 8px white, 0 0 20px white, 0 0 40px white;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.3;
+    text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 50px #ff00ff;
+    transform: scale(1.1) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 8px white, 0 0 20px white, 0 0 40px white;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.misty {
+  font-family: 'Dancing Script', cursive;
+  font-size: 36px; /* Larger text size for elegance */
+  color: white;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 8px white, 0 0 20px white, 0 0 40px white;
+  animation: jeffBlink 2s infinite ease-in-out; /* Slightly longer duration for smooth blinking */
+}
+
+
+/* Inbox Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: cyan;
+  color: black;
+  margin: 15% auto;
+  padding: 20px;
+  border: 2px solid #2FD2D6;
+  width: 300px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px cyan;
+}
+
+.close {
+  color: beige;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: red;
+}
+
+
+
+  </style>
+</head>
+
+
+
+
+<body>
+<header>
+  <div class="header-content" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="title" style="flex-grow: 1; text-align: center;">
+      <i>DEAR</i> <span class="misty">MISTY</span>
     </div>
+    <div class="inbox-text" onclick="openModal()">Inbox</div>
+  </div>
+</header>
+
+
+
+
+
+<!-- Modal for Inbox Message -->
+<div id="inboxModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <p>Hello Mistylicious,</p> <p> hope ya like ur new page ❤️❤️ </p>
+  </div>
 </div>
 
+  <video id="bg-video" autoplay muted loop>
+    <source src="thunder.mp4" type="video/mp4"> Your browser does not support the video tag.
+  </video>
+
+  <!-- Dropdown Menu for Songs -->
+<!-- Dropdown Menu for Songs -->
+<div class="dropdown">
+<select id="category-select">
+  <option value="e-songs">E SONGS</option>
+  <option value="m-songs">M SONGS</option>
+  <option value="new-release">NEW RELEASE</option>
+</select>
+
+
+</div>
+
+<!-- Category Images -->
+<div class="category-images">
+  <div class="category" data-category="e-songs" onclick="filterSongs('e-songs')">
+    <img src="e-songs.jpg" alt="E SONGS" />
+    <div class="category-label">E SONGS</div>
+  </div>
+  <div class="category" data-category="m-songs" onclick="filterSongs('m-songs')">
+    <img src="m-songs.jpg" alt="M SONGS" />
+    <div class="category-label">M SONGS</div>
+  </div>
+  <div class="category" data-category="new-release" onclick="filterSongs('new-release')">
+    <img src="new-release.jpg" alt="NEW RELEASE" />
+    <div class="category-label">NEW RELEASE</div>
+  </div>
+</div>
+
+
+
+<!-- Music Controls -->
+<div class="controls">
+  <button onclick="prevSong()">⏮ Prev</button>
+  <button onclick="playSong()">▶ Play</button>
+  <button onclick="pauseSong()">⏸ Pause</button>
+  <button onclick="stopSong()">⏹ Stop</button>
+  <button onclick="nextSong()">⏭ Next</button>
+  <button onclick="toggleAutoplay()">🔁 Autoplay: <span id="autoplay-status">OFF</span></button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+  <!-- Song Info -->
+  <img id="song-image" class="song-image" src="" alt="Song Image" />
+  <div id="song-title">Song Title</div>
+
+  <!-- Music Wave Animation -->
+  <div class="boxContainer">
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+  </div>
+
+  <!-- Audio Player -->
+  <audio id="audio-player" onended="handleSongEnd()"></audio>
+
 <script>
-const poemsMisty = [
-    {
-        title: "M",
-        text: [
-            "She is the fearless one, a name well-known,",
-            "Brave in spirit, yet secrets she’s sown.",
-            "Beneath her strength, a softness resides,",
-            "A hidden sorrow that she often hides.",
-            "",
-            "Most see her smile, a mask so bright,",
-            "Yet shadows linger, veiled from sight.",
-            "In moments of stillness, her heart feels the weight,",
-            "Though her face bears no trace of the burdens of fate.",
-            "",
-            "Many admire her, drawn to her light,",
-            "But one holds her heart, her true guiding light.",
-            "A soul who transformed her, a love so profound,",
-            "In their embrace, her true self is found.",
-            "",
-            "For the one that she loves, both strong and yet frail,",
-            "Shares in the journey, through storm and through gale.",
-            "Together they stand, in the dance of the brave,",
-           
-            "",
-            "Two hearts intertwined, in the love that they crave.",
-            ""
-        ],
-        
-    },
-    {
-        title: "BENEATH THE STEEL",
-        text: [
-            "People may think they know your soul",
-            "Yet I wonder if they truly see the whole.",
-            "Perhaps just fragments of you, scattered and few,",
-            "With layers upon layers—waiting to break through.",
-            "",
-            "I ponder what truly stirs your heart's desire—",
-            "Do you like the ice or the fire?",
-            "Will there be a cost to see your naked smile?",
-            "I wonder why it feels so worth the while.",
-            "",
-            "I know when shadows loom and you feel alone,",
-            "I know your quiet scream— it hits me to the bone.",
-            "I know what demons can do,",
-            "But now you won't face the darkness alone—",
-            "",
-            "I'll wrap my arms around you,",
-            "You'll find a way back home.",
-            "But just like rivers to the sea,",
-            "I know it takes time to see me.",
-            "",
-            "You are a warrior, clad in armor bright,",
-            "Yet beneath the steel— your soul craves the light.",
-        ],
-        
-    }
+const originalSongs = [
+    { title: "She's Everything by Brad Paisley", file: "Brad Paisley - She's Everything (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Stop & Stare by OneRepublic", file: "Stop & Stare - OneRepublic (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Sweet Disposition by The Temper Trap", file: "The Temper Trap - Sweet Disposition (lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Closing Time by Semisonic", file: "Closing Time Semisonic Lyrics.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Kiss From A Rose by Seal", file: "Seal - Kiss From A Rose (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Time of Your Life by Green Day", file: "Green Day Time of Your Life(Good Riddance) Lyrics.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Airplanes by B.o.B (ft. Hayley Williams)", file: "Airplanes - B.o.B (feat. Hayley Williams of Paramore) [LyricsVietsub].mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Stay by Rihanna", file: "Rihanna - Stay (Lyrics) I want you to stay.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Russian Roulette by Rihanna", file: "Rihanna - Russian Roulette(Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Home by Michael Buble", file: "michael bublé - home (lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "The Night We Met by Ehllen Quezada", file: "The night we met (Ehllen's Cover).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Older by Sasha Sloan", file: "Sasha Sloan - Older (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Untitled by Simple Plan", file: "Simple Plan - Untitled (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Breathe Me by Sia", file: "Breathe me -- sia.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Hurt by Nine Inch Nails", file: "Nine Inch Nails - Hurt (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "They'll Never Know by Ross Copperman", file: "Ross Copperman - They'll Never Know [Lyrics On Screen].mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Rainbow by Kacey Musgraves", file: "Kacey Musgraves - Rainbow (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Bad To The Bone by George Thorogood", file: "Bad To The Bone.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Ride of the Valkyries by Wagner", file: "UBC Symphony Orchestra - Wagner - Ride of the Valkyries from Die Walküre.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "It's A Long Way To The Top by AC/DC", file: "ACDC - It's A Long Way To The Top [Official Music Video], Full HD (Remaster, Resync and Upscale).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Gypsy by Fleetwood Mac", file: "Fleetwood Mac - Gypsy (Lyrics).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Drive by The Cars", file: "The Cars - Drive (Lyrics).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Insensitive by Jann Arden", file: "Jann Arden - Insensitive (Live From Songs & Stories) [mYrzQ5mo4dc].mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Turn Around, Look At Me by Glenn", file: "Turn Around, Look At Me.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "I'm Like A Bird by Nelly Furtado", file: "Nelly Furtado - I'm Like A Bird (Official Music Video).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Barracuda by Heart", file: "Heart - Barracuda.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "OUTRO by M83", file: "M83 - OUTRO (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Flightless Bird by Iron & Wine", file: "Flightless Bird, American Mouth.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "BIRDS OF A FEATHER by Billie Eilish", file: "Billie Eilish - BIRDS OF A FEATHER.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "SHE by Elvis Costello", file: "She.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "The Forgotten by Green Day", file: "Green Day - The Forgotten - Lyrics.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Vienna by Billy Joel", file: "Billy Joel - Vienna (Audio) (Official Audio).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "River by Alex Lambert", file: "Alex Lambert - River (Leon Bridges Cover).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Lover, You Should've Come Over by Jeff Buckley", file: "Jeff Buckley - Lover, You Should've Come Over (Audio).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "You Didn't Have to Be so Nice by The Lovin' Spoonful", file: "The Lovin' Spoonful - You Didn't Have to Be so Nice (Audio).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "The Captain of Her Heart by Double", file: "The Captain of Her Heart (Radio Version).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Life Is A Rock by Reunion", file: "Life Is A Rock (But The Radio Rolled Me) BEST LYRICS- Reunion 1974.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "The Only Time To Live Is Now by Cyptor", file: "Cyptor - The Only Time To Live Is Now.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Soldier's Eyes by Soldier's Eyes", file: "Soldier's Eyes.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Fragile by Laufey", file: "Laufey - Fragile (Acoustic) (mp3cut.net).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Misty by Chase Eagleson", file: "Misty - Ella Fitzgerald (Acoustic Cover by Chase Eagleson).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Halo by Beyoncé", file: "Halo - Beyoncé (Lyrics).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Beth by Kiss", file: "Beth Lyrics Kiss.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Total Eclipse of the Heart by Bonnie Tyler", file: "Bonnie Tyler - Total Eclipse of the Heart (Lyrics).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Songbird by Barbra Streisand", file: "Songbird (lyrics) - Barbra Streisand.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Reality by Richard Sanderson", file: "Richard Sanderson - Reality (original, with lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Eyes Without A Face by Billy Idol", file: "Eyes Without A Face (Remastered 1999).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Love Don't Cost A Thing by Jennifer Lopez", file: "Love Don't Cost A Thing - Jennifer Lopez (Lyrics).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "If You Had My Love by Jennifer Lopez", file: "If You Had My Love.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "One Night In Bangkok by Murray Head", file: "Murray Head - One Night In Bangkok From CHESS.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Nobody by Sylvia", file: "Sylvia Nobody Lyrics.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Promise Me by Beverly Craven", file: "Beverley Craven - Promise Me.mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Black by Norah Jones", file: "Black (feat. Norah Jones).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Cold Little Heart by Michael Kiwanuka", file: "Michael Kiwanuka - Cold Little Heart (lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Long Long Time by Linda Ronstadt", file: "Long Long Time (Remastered).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Stop Crying Your Heart Out by Oasis", file: "Oasis - Stop Crying Your Heart Out (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Count on Me by Bruno Mars", file: "Bruno Mars - Count on Me (Official Lyric Video).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "God Bless the USA by Lee Greenwood", file: "God Bless the USA-Lee Greenwood (Lyrics).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "In Love With U by The 1975", file: "The 1975 - I'm In Love With You (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "A Horse With No Name by America", file: "America - A Horse With No Name (Lyrics).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Misty by E", file: "Misty (short cover).mp3", image: "e-songs.jpg", category: "e-songs" },
+    { title: "Middle by DJ Snake", file: "DJ Snake - Middle (Lyrics) ft. Bipolar Sunshine.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "First Time Ever I Saw Your Face by Céline Dion", file: "Céline Dion - The First Time Ever I Saw Your Face (Official Audio).mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "When You Say Nothing At All by Ronan Keating", file: "Ronan Keating - When You Say Nothing At All [HQ].mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "Thunderstruck by AC/DC", file: "ACDC - Thunderstruck.mp3", image: "m-songs.jpg", category: "m-songs" },
+    { title: "GYPSY by ELLE", file: "Gypsy-Elle.wav", image: "e-songs.jpg", category: "e-songs" },
+    { title: "BENEATH THE STEEL by ELLE", file: "BENEATH THE STEEL.mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "MISTYPEDIA by ELLE", file: "Mistypedia ( Wacha gonna do to me) (mp3cut.net).mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "M by ELLE", file: "M(POEM).mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "WALLS by ELLE", file: "WALLS-  Official Audio.mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "I'M STILL HERE by ELLE", file: "I'M STILL HERE-  Official Audio.mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "HEROES NEVER DIE by ELLE", file: "Heroes never die.mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "รักเธอในแบบที่เธอเป็น by ELLE", file: "รักเธอในแบบที่เธอเป็น.mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "ONE MISTAKE by ELLE", file: "ONE MISTAKE-  Official audio.mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "DEMONS LIKE MINE by ELLE", file: "DEMONS LIKE MINE.mp3", image: "new-release.jpg", category: "new-release" },
+    { title: "FORGIVE YOURSELF FIRST by ELLE", file: "FORGIVE YOURSELF FIRST.mp3", image: "new-release.jpg", category: "new-release" }
 ];
 
-let currentPoemIndex = 0;
 
-function openPoemTable() {
-    document.getElementById('poemTable').style.display = 'block'; // Show the table
-    showPoem(currentPoemIndex); // Show the first poem
-}
+  let songs = [...originalSongs];
+  let currentIndex = 0;
+  let autoplay = false;
+  const audioPlayer = document.getElementById('audio-player');
+  const image = document.getElementById('song-image');
+  const title = document.getElementById('song-title');
+  const autoplayStatus = document.getElementById('autoplay-status');
+  const boxContainer = document.querySelector('.boxContainer'); // Reference to the animation container
 
-function closePoemTable() {
-    document.getElementById('poemTable').style.display = 'none'; // Hide the table
-}
+  const defaultImage = "yes.jpg"; // Default image when no category is selected
 
-function showPoem(index) {
-    const poemTitle = document.getElementById('poemTitle');
-    const poemText = document.getElementById('poemText');
-    
-    poemTitle.innerHTML = poemsMisty[index].title;
-    poemText.innerHTML = poemsMisty[index].text.join('<br>'); // Join lines with line breaks
-}
+  function loadSong(index) {
+    const song = songs[index];
+    audioPlayer.src = song.file;
+    image.src = song.image;  // Update image to the song's image
+    title.textContent = song.title;
+  }
 
-function changePoem(direction) {
-    const poemText = document.getElementById('poemText');
-    const currentPoem = poems[currentPoemIndex];
+  function playSong() {
+    if (audioPlayer.src !== getSongPath(songs[currentIndex].file)) {
+      loadSong(currentIndex);
+    }
+    audioPlayer.play();
+    boxContainer.classList.add('playing'); // Start the animation
+  }
 
-    // Fade out current poem
-    poemText.classList.add('fade-out');
+  function pauseSong() {
+    audioPlayer.pause();
+    boxContainer.classList.remove('playing'); // Stop the animation
+  }
 
-    setTimeout(() => {
-        currentPoemIndex += direction; // Update the index based on direction
-        if (currentPoemIndex < 0) {
-            currentPoemIndex = 0; // Prevent going below the first poem
-        } else if (currentPoemIndex >= poemsMisty.length) {
-            currentPoemIndex = poemsMisty.length - 1; // Prevent going above the last poem
-        }
-        showPoem(currentPoemIndex); // Show the updated poem
-        poemText.classList.remove('fade-out'); // Fade in new poem
-    }, 300); // Match this timeout with the CSS transition duration
-}
+  function stopSong() {
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
+    boxContainer.classList.remove('playing'); // Stop the animation
+  }
 
+  function getSongPath(fileName) {
+    const a = document.createElement('a');
+    a.href = fileName;
+    return a.href;
+  }
 
+  function filterSongs(category) {
+    if (category === 'all') {
+      songs = [...originalSongs];
+      image.src = defaultImage; // Set default image when no category is selected
+    } else {
+      songs = originalSongs.filter(song => song.category === category);
+      image.src = songs.length > 0 ? songs[0].image : defaultImage;  
+    }
+    loadSong(currentIndex);
+    updateDropdown(category);
+  }
 
-function showPoem(index) {
-    const poemTitle = document.getElementById('poemTitle');
-    const poemText = document.getElementById('poemText');
-    const pageCount = document.getElementById('pageCount');
+  function updateDropdown(category) {
+    const categorySelect = document.getElementById('category-select');
+    categorySelect.innerHTML = '';  
 
-    poemTitle.innerHTML = poemsMisty[index].title;
-    poemText.innerHTML = poemsMisty[index].text.join('<br>');
+    const filteredSongs = originalSongs.filter(song => song.category === category);
+    filteredSongs.forEach((song, index) => {
+      const songOption = document.createElement('option');
+      songOption.value = index; // Use index as value to identify song
+      songOption.textContent = song.title;
+      categorySelect.appendChild(songOption);
+    });
+  }
 
-    // Automatically calculate total pages and current page
-    const totalPages = poemsMisty.length;
-    const currentPage = index + 1;
+  // Event listener for dropdown selection
+  const categorySelect = document.getElementById('category-select');
+  categorySelect.addEventListener('change', (event) => {
+    currentIndex = parseInt(event.target.value); // Get the selected index
+    playSong(); // Play the selected song
+  });
 
-    // Display the page info
-    pageCount.innerHTML = `Page ${currentPage} of ${totalPages}`;
-}
+  function prevSong() {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = songs.length - 1;
+    }
+    loadSong(currentIndex);
+    playSong(); // Auto play the song after loading
+  }
+
+  function nextSong() {
+    if (currentIndex < songs.length - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    loadSong(currentIndex);
+    playSong(); // Auto play the song after loading
+  }
+
+  function toggleAutoplay() {
+    autoplay = !autoplay;
+    autoplayStatus.textContent = autoplay ? 'ON' : 'OFF';
+  }
+
+  function handleSongEnd() {
+    boxContainer.classList.remove('playing'); // Stop animation when song ends
+    if (autoplay) {
+      nextSong();
+    }
+  }
+
+  // Event listener for when the song ends
+  audioPlayer.addEventListener('ended', handleSongEnd);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    image.src = defaultImage; // Set default image when the page loads
+    filterSongs('e-songs'); // Automatically display the first song from E Songs
+  });
 </script>
 
+
+
+  <div class="bottom-text"> Never let them see you cry</div>
+
+<div class="mini-calendar">
+  <div id="calendar-date"></div>
+</div>
 <style>
-.poem-table {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #bdf3f0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    padding: 20px;
-    width: 500px; /* Fixed width */
-    height: 580px; /* Fixed height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    font-size: 17px;
-    font-style: bold;
-}
-
-.table-content {
-    text-align: left;
-    color: black; /* All text inside will be black */
-    font-family: calibri;
-}
-
-.poem-prev, .poem-next {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #ae300c;
-    color: black;
-    border: 2px solid black;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    margin: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover effect */
-.poem-prev:hover, .poem-next:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Active (click) effect */
-.poem-prev:active, .poem-next:active {
-    transform: scale(0.95);
-    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
-    transition: none;
-}
-
-/* Fade-out effect */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.mini-calendar {
+  position: fixed;
+  top: 100px; /* just below the header */
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: #00ffe7;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  z-index: 999;
+  box-shadow:
+    0 0 5px #00ffe7,
+    0 0 10px #00ffe7,
+    0 0 15px #00ffe7,
+    0 0 20px #00ffe7;
+  text-shadow:
+    0 0 3px #00ffe7,
+    0 0 6px #00ffe7,
+    0 0 10px #00ffe7;
+  letter-spacing: 1px;
 }
 </style>
 
+<script>
+
+// Show current date in calendar
+function updateCalendarDate() {
+  const calendarDate = document.getElementById('calendar-date');
+  const now = new Date();
+  const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+  calendarDate.textContent = now.toLocaleDateString(undefined, options);
+}
+
+updateCalendarDate();
+
+</script>
+
+<style>
+
+.clock-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10; /* Adjust if needed */
+  pointer-events: none; /* Prevent interference with UI */
+}
+
+#canvas {
+  display: block;
+  border-radius: 50%;
+
+}
 
 
+
+
+  </style>
+</head>
+<body>
+
+<div class="clock-container">
+  <canvas id="canvas"></canvas>
+</div>
+
+
+
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Set the canvas dimensions
+  canvas.width = 405;
+  canvas.height = 405;
+
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const radius = canvas.width / 2 - 20;
+
+  // Function to draw a five-pointed star
+  function drawStar(x, y, size, color) {
+    ctx.beginPath();
+    for (let i = 0; i < 5; i++) {
+      const angle = i * 4 * Math.PI / 5;
+      const sx = x + size * Math.sin(angle);
+      const sy = y - size * Math.cos(angle);
+      ctx.lineTo(sx, sy);
+    }
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  // Function to draw a stripe
+  function drawStripe(x, y, length, angle, color) {
+    ctx.beginPath();
+    ctx.lineWidth = 3.8;
+    ctx.strokeStyle = color;
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + length * Math.sin(angle), y - length * Math.cos(angle));
+    ctx.stroke();
+  }
+
+  let currentSeconds = 0;
+  let lastUpdateTime = 0;
+
+  function drawClock() {
+    const now = new Date();
+    const timeNow = now.getTime();
+
+    const deltaTime = timeNow - lastUpdateTime;
+    lastUpdateTime = timeNow;
+
+    currentSeconds += deltaTime / 1000;
+    currentSeconds %= 60;
+
+    const circleProgress = currentSeconds / 60;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Outer neon circle
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = 'cyan';
+    ctx.fill();
+    ctx.lineWidth = 11;
+    ctx.strokeStyle = 'red';
+    ctx.stroke();
+
+    // White ring
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius * 0.95, 0, 2 * Math.PI);
+    ctx.lineWidth = 11;
+    ctx.strokeStyle = 'white';
+    ctx.stroke();
+
+    // Stars for hours
+    for (let i = 0; i < 12; i++) {
+      const angle = i * 30 * Math.PI / 180;
+      const x = centerX + radius * 0.8 * Math.sin(angle);
+      const y = centerY - radius * 0.8 * Math.cos(angle);
+
+      const hour = now.getHours() % 12;
+      const minute = now.getMinutes();
+
+      let color;
+      if (i === hour) color = 'darkblue';
+      else if (i === Math.floor((minute / 5) % 12)) color = '#2FD2D6';
+      else color = 'white';
+
+      drawStar(x, y, 14, color);
+    }
+
+    // Minute stripes
+    const stripeOffset = 0.5;
+    const stripeLength = radius * 0.28 - radius * 0.02;
+    for (let i = 0; i < now.getMinutes(); i++) {
+      if ((i + 1) % 5 !== 0) {
+        const angle = (i + 1) * 6 * Math.PI / 180;
+        const x = centerX + radius * stripeOffset * Math.sin(angle);
+        const y = centerY - radius * stripeOffset * Math.cos(angle);
+        drawStripe(x, y, stripeLength, angle, '#FB2413');
+        drawStripe(x, y, stripeLength, angle + Math.PI, '#FB2413');
+      }
+    }
+
+    // Inner blue circle (seconds progress)
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius * 0.10 * (currentSeconds / 60), 0, 2 * Math.PI);
+    ctx.fillStyle = 'blue';
+    ctx.fill();
+
+    // Inner border
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius * 0.10, 0, 2 * Math.PI);
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = '#4FA8C2';
+    ctx.stroke();
+    ctx.fillStyle = 'beige';
+    ctx.fill();
+
+    // Star in center
+    drawStar(centerX, centerY, 13, '#C9AE21');
+
+    // Blue progress ring
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius * 0.26, 0, 2 * Math.PI);
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = '#4FA8C2';
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius * 0.13, -Math.PI / 2, circleProgress * 2 * Math.PI - Math.PI / 2);
+    ctx.arc(centerX, centerY, radius * 0.24, circleProgress * 2 * Math.PI - Math.PI / 2, -Math.PI / 2, true);
+    ctx.lineWidth = 7;
+    ctx.fillStyle = 'red';
+    ctx.fill();
+
+    requestAnimationFrame(drawClock);
+  }
+
+  lastUpdateTime = new Date().getTime();
+  drawClock();
+</script>
+
+
+<script>
+  function openModal() {
+    document.getElementById("inboxModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("inboxModal").style.display = "none";
+  }
+
+  // Optional: Close when clicking outside the modal box
+  window.onclick = function(event) {
+    const modal = document.getElementById("inboxModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
 
 
 </body>
 </html>
-
-
-
-
-
-
